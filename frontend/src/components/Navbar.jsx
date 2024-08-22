@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaSearch, FaShoppingCart, FaHeart } from "react-icons/fa";
+import { FaUser, FaShoppingCart, FaHeart } from "react-icons/fa";
 // import CartButton from "./CartButton";
 import "../styles/Navbar.css";
 import logo from "../assets/logo.png";
@@ -30,17 +30,19 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-right">
-        <Link to="/login-signup" className="icon-link">
-          LOGIN / REGISTER
-        </Link>
+        <div className="user-menu">
+          <FaUser className="user-icon" />
+          <div className="dropdown-content">
+            <Link to="/login">Login</Link>
+            <Link to="/signup">Sign Up</Link>
+          </div>
+        </div>
         <Link to="/wishlist" className="icon-link">
           <FaHeart />
           <span className="icon-badge">0</span>
-          <span>Wishlist</span>
         </Link>
         <Link to="/cart" className="icon-link">
           <FaShoppingCart />
-          <span>$0.00 USD</span>
           <span className="icon-badge">0</span>
         </Link>
       </div>

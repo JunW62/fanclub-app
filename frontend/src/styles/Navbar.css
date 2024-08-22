@@ -52,7 +52,7 @@
 
 .icon-link svg {
   margin-right: 5px;
-  font-size: 18px;
+  font-size: 24px;
 }
 
 .icon-badge {
@@ -64,4 +64,40 @@
   border-radius: 50%;
   padding: 2px 6px;
   font-size: 10px;
+}
+
+.user-menu {
+  position: relative;
+  margin-left: 20px;
+}
+
+.user-icon {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #333;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 4px;
+}
+
+.dropdown-content a {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #444;
+}
+
+.user-menu:hover .dropdown-content {
+  display: block;
 }

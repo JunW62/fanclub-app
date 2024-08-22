@@ -28,5 +28,18 @@
 }
 
 .footer-right a:hover {
-  color: #ccc; /* Lighter color on hover */
+  color: #ccc;
+}
+
+/* Carousel*/
+.carousel .slide img {
+  height: 100vh;
+  object-fit: cover;
+}
+
+.carousel .legend {
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 10px;
+  font-size: 14px;
 }

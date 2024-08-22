@@ -7,7 +7,8 @@ import CartPage from "./pages/CartPage";
 import WishlistPage from "./pages/WishlistPage";
 import NewsAndEventsPage from "./pages/NewsAndEventsPage";
 import AboutPage from "./pages/AboutPage";
-import LoginSignupPage from "./pages/LoginSignupPage";
+import SignupPage from "./pages/SignupPage";
+import LoginPage from "./pages/LoginPage";
 import EditProductPage from "./pages/EditProductPage";
 import GalleryPage from "./pages/GalleryPage";
 import Navbar from "./components/Navbar";
@@ -26,7 +27,8 @@ const AppRouter = () => {
         <Route path="/news-events" element={<NewsAndEventsPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/gallery" element={<GalleryPage />} />
-        <Route path="/login-signup" element={<LoginSignupPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/login" element={<LoginPage />} />
         <Route path="/edit-product/:id" element={<EditProductPage />} />
         <Route path="*" element={<HomePage />} /> {/* Fallback route */}
       </Routes>
