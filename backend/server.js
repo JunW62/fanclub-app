@@ -30,8 +30,9 @@ connectDB();
 // Middleware to parse JSON bodies
 app.use(express.json());
 
-// Routes
-// app.use("/api", require("./routes/userRoutes.js"));
+//Routes;
+app.use("/api", require("./routes/userRoutes.js"));
+app.use("/api", require("./routes/productRoutes.js"));
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Lost Bloodline Series Stand",
+    "description": "Acrylic stand",
+    "price": 7.69,
+    "category": "Stand",
+    "stock": 150,
+    "imgUrl": "",
+    "size": "190 mm Height",
+    "material": "Acrylic"
+  },
+  {
+    "name": "Lost Bloodline Series Badge",
+    "description": "A ceramic mug with dimensions 80 * 80 mm.",
+    "price": 15.0,
+    "category": "Badge",
+    "stock": 200,
+    "imgUrl": "",
+    "size": "80 * 80 mm",
+    "material": "Ceramic"
+  }
+]
