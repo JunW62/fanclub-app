@@ -1,0 +1,32 @@
+/* Footer */
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #111; /* Dark background */
+  color: #fff; /* White text */
+  font-size: 14px;
+}
+
+.footer-left {
+  flex: 1;
+}
+
+.footer-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.footer-right a {
+  color: #fff; /* White icons */
+  margin-left: 20px;
+  font-size: 24px; /* Larger icon size */
+  transition: color 0.3s ease;
+}
+
+.footer-right a:hover {
+  color: #ccc; /* Lighter color on hover */
+}
