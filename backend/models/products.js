@@ -6,8 +6,22 @@ const imageSchema = new mongoose.Schema({
 });
 
 const sizeSchema = new mongoose.Schema({
-  width: { type: Number },
-  height: { type: Number },
+  width: {
+    type: String,
+    set: (value) => `${value} mm`,
+  },
+  height: {
+    type: String,
+    set: (value) => `${value} mm`,
+  },
+  depth: {
+    type: String,
+    set: (value) => `${value} mm`,
+  },
+  diameter: {
+    type: String,
+    set: (value) => `${value} mm`,
+  },
 });
 
 const productSchema = new mongoose.Schema({
@@ -19,6 +33,7 @@ const productSchema = new mongoose.Schema({
   imgUrls: [imageSchema],
   size: sizeSchema,
   material: { type: String },
+  releaseDate: { type: Date },
   createdAt: { type: Date, default: Date.now },
 });
 

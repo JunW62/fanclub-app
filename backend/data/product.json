@@ -5,18 +5,34 @@
     "price": 7.69,
     "category": "Stand",
     "stock": 150,
-    "imgUrl": "",
-    "size": "190 mm Height",
-    "material": "Acrylic"
+    "imgUrls": [
+      {
+        "url": "https://drive.google.com/file/d/1TflqFaHeOrIwo3NkapPw5ZnRn30NwVJL/view?usp=sharing",
+        "description": "Front view"
+      }
+    ],
+    "size": {
+      "height": 190
+    },
+    "material": "Acrylic",
+    "releaseDate": "2022-05-27T00:00:00Z"
   },
   {
-    "name": "Lost Bloodline Series Badge",
-    "description": "A ceramic mug with dimensions 80 * 80 mm.",
-    "price": 15.0,
+    "name": "Awakening Series Badge",
+    "description": "Round Tinplate",
+    "price": 2.09,
     "category": "Badge",
-    "stock": 200,
-    "imgUrl": "",
-    "size": "80 * 80 mm",
-    "material": "Ceramic"
+    "stock": 150,
+    "imgUrls": [
+      {
+        "url": "https://drive.google.com/file/d/1s5Rby-H4LhwbW99f1CpDPT5SXZl-zxn7/view?usp=sharing",
+        "description": "Front view"
+      }
+    ],
+    "size": {
+      "diameter": 58
+    },
+    "material": "Tinplate",
+    "releaseDate": "2021-05-07T00:00:00Z"
   }
 ]
