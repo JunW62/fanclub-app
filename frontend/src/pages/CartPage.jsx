@@ -1,10 +1,12 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import { removeFromCart, updateCartQuantity } from "../slices/cartSlice";
 
 const CartPage = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.items);
+  const navigate = useNavigate();
 
   const handleRemove = (productId) => {
     dispatch(removeFromCart(productId));
@@ -18,6 +20,11 @@ const CartPage = () => {
     return cartItems
       .reduce((total, item) => total + item.price * item.quantity, 0)
       .toFixed(2);
+  };
+
+  const handleCheckout = () => {
+    // Navigate to the checkout page
+    navigate("/checkout");
   };
 
   return (
@@ -61,7 +68,9 @@ const CartPage = () => {
           <div className="cart-total">
             <h3>Total: ${calculateTotal()}</h3>
           </div>
-          <button className="checkout-button">Proceed to Checkout</button>
+          <button className="checkout-button" onClick={handleCheckout}>
+            Proceed to Checkout
+          </button>
         </div>
       )}
     </div>

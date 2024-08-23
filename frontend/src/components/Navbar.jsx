@@ -44,6 +44,7 @@ const Navbar = () => {
           <div className="dropdown-content">
             <Link to="/login">Login</Link>
             <Link to="/signup">Sign Up</Link>
+            <Link to="/order-history">Order</Link>
           </div>
         </div>
         <Link to="/wishlist" className="icon-link">
