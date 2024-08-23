@@ -1,5 +1,6 @@
 const bcrypt = require("bcryptjs");
 const User = require("../models/user");
+const jwt = require("jsonwebtoken");
 
 // Controller for user sign-up
 exports.signup = async (req, res) => {
@@ -50,9 +51,10 @@ exports.login = async (req, res) => {
       return res.status(400).json({ message: "Invalid credentials" });
     }
 
+    // Success: Return a message or a token if using JWT
     res.status(200).json({ message: "Login successful" });
   } catch (err) {
-    console.error(err);
+    console.error("Error occurred:", err);
     res.status(500).json({ message: "Server error" });
   }
 };
