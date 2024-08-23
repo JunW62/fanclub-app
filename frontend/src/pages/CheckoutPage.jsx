@@ -7,7 +7,8 @@ const CheckoutPage = () => {
   const cartItems = useSelector((state) => state.cart.items);
   const orderStatus = useSelector((state) => state.orders.status);
   const error = useSelector((state) => state.orders.error);
-  const userId = useSelector((state) => state.user.id); // Assuming you have user ID in the state
+  const userId = useSelector((state) => state.user.userInfo.user.id);
+  //   const user = useSelector((state) => state.user);
 
   const handlePlaceOrder = () => {
     const orderData = {
@@ -33,7 +34,9 @@ const CheckoutPage = () => {
       paymentMethod: "Credit Card", // Replace with actual payment method from form
       paymentStatus: "Paid", // Update based on actual payment status
     };
-
+    console.log("Order Data:", orderData);
+    console.log("User ID:", userId);
+    // console.log("User state:", user);
     dispatch(placeOrder(orderData));
   };
 
@@ -57,7 +60,16 @@ const CheckoutPage = () => {
           >
             {orderStatus === "loading" ? "Placing Order..." : "Place Order"}
           </button>
-          {orderStatus === "failed" && <p>Error: {error}</p>}
+          {orderStatus === "failed" && (
+            <p>
+              Error:{" "}
+              {error
+                ? typeof error === "string"
+                  ? error
+                  : JSON.stringify(error)
+                : "Unknown error"}
+            </p>
+          )}
         </>
       )}
     </div>

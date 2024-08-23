@@ -1,17 +1,29 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const apiUril = "http://localhost:3000";
+const apiUrl = "http://localhost:3000";
 
 // Thunk to place an order
 export const placeOrder = createAsyncThunk(
   "orders/placeOrder",
-  async (orderData, { rejectWithValue }) => {
+  async (orderData, { rejectWithValue, getState }) => {
     try {
-      const response = await axios.post(`${apiUril}/api/orders`, orderData);
+      const token = getState().user.token; // Retrieve token from user state
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`, // Include token in Authorization header
+          "Content-Type": "application/json",
+        },
+      };
+
+      const response = await axios.post(
+        `${apiUrl}/api/orders`,
+        orderData,
+        config
+      );
       return response.data;
     } catch (err) {
-      return rejectWithValue(err.response.data);
+      return rejectWithValue(err.response ? err.response.data : err.message);
     }
   }
 );
@@ -19,12 +31,22 @@ export const placeOrder = createAsyncThunk(
 // Thunk to fetch orders for a user
 export const fetchOrdersByUser = createAsyncThunk(
   "orders/fetchOrdersByUser",
-  async (userId, { rejectWithValue }) => {
+  async (userId, { rejectWithValue, getState }) => {
     try {
-      const response = await axios.get(`${apiUril}/api/orders/user/${userId}`);
+      const token = getState().user.token; // Retrieve token from user state
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`, // Include token in Authorization header
+        },
+      };
+
+      const response = await axios.get(
+        `${apiUrl}/api/orders/user/${userId}`,
+        config
+      );
       return response.data;
     } catch (err) {
-      return rejectWithValue(err.response.data);
+      return rejectWithValue(err.response ? err.response.data : err.message);
     }
   }
 );
