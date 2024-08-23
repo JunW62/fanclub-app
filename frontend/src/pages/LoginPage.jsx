@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 const apiUril = "http://localhost:3000";
 
 const LoginPage = () => {
@@ -11,7 +10,7 @@ const LoginPage = () => {
   });
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -29,7 +28,7 @@ const LoginPage = () => {
       setSuccess(response.data.message);
       setError("");
       // Redirect to profile page after successful login
-      history.push("/profile");
+      navigate("/profile");
 
       // Store the token in localStorage or sessionStorage
       localStorage.setItem("token", response.data.token);
