@@ -1,11 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaUser, FaShoppingCart, FaHeart } from "react-icons/fa";
-// import CartButton from "./CartButton";
+import { useSelector } from "react-redux";
 import "../styles/Navbar.css";
 import logo from "../assets/logo.png";
 
 const Navbar = () => {
+  // Get the number of items in the cart
+  const cartItems = useSelector((state) => state.cart.items);
+
+  // Calculate the total number of items in the cart
+  const totalItems = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
+
   return (
     <nav className="navbar">
       <div>
@@ -43,7 +52,9 @@ const Navbar = () => {
         </Link>
         <Link to="/cart" className="icon-link">
           <FaShoppingCart />
-          <span className="icon-badge">0</span>
+          <span className="icon-badge">
+            {totalItems > 9 ? "9+" : totalItems}
+          </span>
         </Link>
       </div>
     </nav>
