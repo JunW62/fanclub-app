@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+const apiUril = "http://localhost:3000";
+
 const SignupPage = () => {
   const [formData, setFormData] = useState({
     username: "",
@@ -25,7 +27,7 @@ const SignupPage = () => {
     }
 
     try {
-      const response = await axios.post("/api/users/signup", {
+      const response = await axios.post(`${apiUril}/api/users/signup`, {
         username: formData.username,
         email: formData.email,
         password: formData.password,
@@ -33,7 +35,9 @@ const SignupPage = () => {
       setSuccess(response.data.message);
       setError("");
     } catch (err) {
-      setError(err.response?.data?.message || "An error occurred");
+      setError(
+        err.response?.data?.message || "Fetching user date error occurred"
+      );
       setSuccess("");
     }
   };

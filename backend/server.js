@@ -1,6 +1,7 @@
 const express = require("express");
 const connectDB = require("./db/conn");
-const User = require("./models/user");
+const userRoutes = require("./routes/userRoutes.js");
+const cors = require("cors");
 
 const app = express();
 
@@ -30,9 +31,20 @@ connectDB();
 // Middleware to parse JSON bodies
 app.use(express.json());
 
+// Enable CORS for all routes
+app.use(
+  cors({
+    origin: "http://localhost:5173", // Allow requests from frontend
+  })
+);
+
 //Routes;
-app.use("/api", require("./routes/userRoutes.js"));
+app.use("/api/users", userRoutes);
 app.use("/api", require("./routes/productRoutes.js"));
+
+// app.get("/api/test", (req, res) => {
+//   res.send("Proxy is working!");
+// });
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
