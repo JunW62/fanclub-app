@@ -21,8 +21,13 @@ export const placeOrder = createAsyncThunk(
         orderData,
         config
       );
+      console.log(token);
       return response.data;
     } catch (err) {
+      if (err.response && err.response.data.message === "jwt expired") {
+        // Handle token expiration (e.g., refresh token or redirect to login)
+        console.error("Token expired. Please log in again.");
+      }
       return rejectWithValue(err.response ? err.response.data : err.message);
     }
   }

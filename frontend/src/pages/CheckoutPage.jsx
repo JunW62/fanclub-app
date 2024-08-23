@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { placeOrder } from "../slices/orderSlice";
 
@@ -10,7 +10,26 @@ const CheckoutPage = () => {
   const userId = useSelector((state) => state.user.userInfo.user.id);
   //   const user = useSelector((state) => state.user);
 
+  // State for form fields
+  const [shippingAddress, setShippingAddress] = useState({
+    street: "",
+    city: "",
+    state: "",
+    postalCode: "",
+    country: "",
+  });
+
+  const handleAddressChange = (e) => {
+    const { name, value } = e.target;
+    setShippingAddress({ ...shippingAddress, [name]: value });
+  };
+
   const handlePlaceOrder = () => {
+    if (cartItems.length === 0) {
+      alert("Your cart is empty!");
+      return;
+    }
+
     const orderData = {
       user: userId,
       items: cartItems.map((item) => ({
@@ -24,18 +43,12 @@ const CheckoutPage = () => {
         (acc, item) => acc + item.quantity * item.price,
         0
       ),
-      shippingAddress: {
-        street: "123 Main St", // Replace with actual address fields from form
-        city: "Somewhere",
-        state: "NY",
-        postalCode: "10001",
-        country: "USA",
-      },
-      paymentMethod: "Credit Card", // Replace with actual payment method from form
-      paymentStatus: "Paid", // Update based on actual payment status
+      shippingAddress,
+      paymentMethod: "Credit Card", // Default payment method
+      paymentStatus: "Paid", // Mark as paid for demo purposes
     };
-    console.log("Order Data:", orderData);
-    console.log("User ID:", userId);
+    // console.log("Order Data:", orderData);
+    // console.log("User ID:", userId);
     // console.log("User state:", user);
     dispatch(placeOrder(orderData));
   };
@@ -47,6 +60,7 @@ const CheckoutPage = () => {
         <p>Order placed successfully!</p>
       ) : (
         <>
+          {/* Cart Items */}
           {cartItems.map((item) => (
             <div key={item._id}>
               <p>
@@ -54,6 +68,63 @@ const CheckoutPage = () => {
               </p>
             </div>
           ))}
+
+          {/* Shipping Address Form */}
+          <h3>Shipping Address</h3>
+          <form>
+            <div>
+              <label>Street:</label>
+              <input
+                type="text"
+                name="street"
+                value={shippingAddress.street}
+                onChange={handleAddressChange}
+                required
+              />
+            </div>
+            <div>
+              <label>City:</label>
+              <input
+                type="text"
+                name="city"
+                value={shippingAddress.city}
+                onChange={handleAddressChange}
+                required
+              />
+            </div>
+            <div>
+              <label>State:</label>
+              <input
+                type="text"
+                name="state"
+                value={shippingAddress.state}
+                onChange={handleAddressChange}
+                required
+              />
+            </div>
+            <div>
+              <label>Postal Code:</label>
+              <input
+                type="text"
+                name="postalCode"
+                value={shippingAddress.postalCode}
+                onChange={handleAddressChange}
+                required
+              />
+            </div>
+            <div>
+              <label>Country:</label>
+              <input
+                type="text"
+                name="country"
+                value={shippingAddress.country}
+                onChange={handleAddressChange}
+                required
+              />
+            </div>
+          </form>
+
+          {/* Place Order Button */}
           <button
             onClick={handlePlaceOrder}
             disabled={orderStatus === "loading"}
