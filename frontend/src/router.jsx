@@ -24,10 +24,11 @@ const AppRouter = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/store" element={<StorePage />} />
+        <Route path="/store" element={<StorePage />} /> {/* Public StorePage */}
         <Route path="/products/:id" element={<ProductPage />} />
-        <Route path="/cart" element={<CartPage />} />
-        <Route path="/wishlist" element={<WishlistPage />} />
+        <Route path="/cart" element={<CartPage />} /> {/* Public CartPage */}
+        <Route path="/wishlist" element={<WishlistPage />} />{" "}
+        {/* Public WishlistPage */}
         <Route path="/news-events" element={<NewsAndEventsPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/gallery" element={<GalleryPage />} />
@@ -36,6 +37,7 @@ const AppRouter = () => {
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/order-history" element={<OrderHistoryPage />} />
         <Route path="/edit-product/:id" element={<EditProductPage />} />
+        {/* Protected Routes */}
         <Route
           path="/store"
           element={
@@ -43,7 +45,8 @@ const AppRouter = () => {
               <StorePage />
             </PrivateRoute>
           }
-        />
+        />{" "}
+        {/* Combined StorePage Route */}
         <Route
           path="/cart"
           element={
@@ -51,7 +54,8 @@ const AppRouter = () => {
               <CartPage />
             </PrivateRoute>
           }
-        />
+        />{" "}
+        {/* Combined CartPage Route */}
         <Route
           path="/wishlist"
           element={
@@ -59,7 +63,8 @@ const AppRouter = () => {
               <WishlistPage />
             </PrivateRoute>
           }
-        />
+        />{" "}
+        {/* Combined WishlistPage Route */}
         <Route
           path="/profile"
           element={

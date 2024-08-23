@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import jwtDecode from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 
 // Thunk to handle login
 export const loginUser = createAsyncThunk(
@@ -27,7 +27,7 @@ const loadUserFromLocalStorage = () => {
       const userInfo = jwtDecode(token); // Decode the token to get user info
       return { userInfo, token };
     } catch (error) {
-      console.error("Failed to decode token");
+      console.error("Failed to decode token:", error.message);
       return { userInfo: null, token: null };
     }
   }

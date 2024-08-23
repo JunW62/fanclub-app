@@ -4,21 +4,23 @@ import { fetchOrdersByUser } from "../slices/orderSlice";
 
 const OrderHistoryPage = () => {
   const dispatch = useDispatch();
+  const { userInfo } = useSelector((state) => state.user);
   const { orders, status, error } = useSelector((state) => state.orders);
-  const userId = useSelector((state) => state.user.id);
 
   useEffect(() => {
-    if (status === "idle") {
-      dispatch(fetchOrdersByUser(userId));
+    if (userInfo?.id) {
+      // Dispatch an action to fetch the user's orders
+      dispatch(fetchOrdersByUser(userInfo.id));
     }
-  }, [status, dispatch, userId]);
+  }, [userInfo, dispatch]);
 
   return (
     <div>
       <h2>Your Orders</h2>
       {status === "loading" && <p>Loading orders...</p>}
       {status === "failed" && <p>Error: {error}</p>}
-      {status === "succeeded" && (
+      {status === "succeeded" && orders.length === 0 && <p>No orders found.</p>}
+      {status === "succeeded" && orders.length > 0 && (
         <ul>
           {orders.map((order) => (
             <li key={order._id}>
