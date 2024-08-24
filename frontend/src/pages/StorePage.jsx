@@ -20,8 +20,8 @@ const StorePage = () => {
     dispatch(addToCart(product));
   };
 
-  const handleAddToWishlist = (product) => {
-    dispatch(addToWishlist(product));
+  const handleAddToWishlist = (productId) => {
+    dispatch(addToWishlist(productId));
   };
 
   let content;
@@ -51,7 +51,7 @@ const StorePage = () => {
               <button onClick={() => handleAddToCart(product)}>
                 Add to Cart
               </button>
-              <button onClick={() => handleAddToWishlist(product)}>
+              <button onClick={() => handleAddToWishlist(product.id)}>
                 Add to Wishlist
               </button>
             </div>

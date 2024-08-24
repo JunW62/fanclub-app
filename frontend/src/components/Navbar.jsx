@@ -14,6 +14,9 @@ const Navbar = () => {
     (total, item) => total + item.quantity,
     0
   );
+  const wishlistItemsCount = useSelector(
+    (state) => state.wishlist.items.length
+  );
 
   return (
     <nav className="navbar">
@@ -49,7 +52,9 @@ const Navbar = () => {
         </div>
         <Link to="/wishlist" className="icon-link">
           <FaHeart />
-          <span className="icon-badge">0</span>
+          <span className="icon-badge">
+            {wishlistItemsCount > 9 ? "9+" : wishlistItemsCount}
+          </span>
         </Link>
         <Link to="/cart" className="icon-link">
           <FaShoppingCart />
