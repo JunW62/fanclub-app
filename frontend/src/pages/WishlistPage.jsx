@@ -15,7 +15,12 @@ const WishlistPage = () => {
   }, [dispatch, wishlistStatus]);
 
   const handleRemoveFromWishlist = (productId) => {
-    dispatch(removeFromWishlist(productId));
+    console.log("Removing product with ID:", productId);
+    if (productId) {
+      dispatch(removeFromWishlist(productId));
+    } else {
+      console.error("Product ID is undefined");
+    }
   };
 
   return (
@@ -26,9 +31,11 @@ const WishlistPage = () => {
       {wishlistStatus === "succeeded" && (
         <ul>
           {wishlistItems.map((item) => (
-            <li key={item.product.id}>
+            <li key={item.product._id}>
               <p>{item.product.name}</p>
-              <button onClick={() => handleRemoveFromWishlist(item.product.id)}>
+              <button
+                onClick={() => handleRemoveFromWishlist(item.product._id)}
+              >
                 Remove
               </button>
             </li>

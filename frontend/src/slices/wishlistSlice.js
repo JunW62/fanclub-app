@@ -45,6 +45,10 @@ export const addToWishlist = createAsyncThunk(
         { productId },
         config
       );
+      if (response.status === 200) {
+        // Handling the "already in wishlist" case
+        return rejectWithValue(response.data.message); // Optionally handle this as a non-error status
+      }
       return response.data;
     } catch (err) {
       if (err.response && err.response.data.message === "jwt expired") {
@@ -87,6 +91,7 @@ const wishlistSlice = createSlice({
     items: [],
     status: "idle",
     error: null,
+    message: null,
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -103,7 +108,13 @@ const wishlistSlice = createSlice({
         state.error = action.payload;
       })
       .addCase(addToWishlist.fulfilled, (state, action) => {
-        state.items.push(action.payload);
+        if (action.payload.message !== "Product already in wishlist") {
+          state.items.push(action.payload.wishlist); // Only update if not a duplicate
+        }
+        state.message = action.payload.message;
+      })
+      .addCase(addToWishlist.rejected, (state, action) => {
+        state.error = action.payload;
       })
       .addCase(removeFromWishlist.fulfilled, (state, action) => {
         state.items = state.items.filter(

@@ -51,7 +51,7 @@ const StorePage = () => {
               <button onClick={() => handleAddToCart(product)}>
                 Add to Cart
               </button>
-              <button onClick={() => handleAddToWishlist(product.id)}>
+              <button onClick={() => handleAddToWishlist(product._id)}>
                 Add to Wishlist
               </button>
             </div>
