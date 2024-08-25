@@ -1,28 +1,37 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { FaUser, FaShoppingCart, FaHeart } from "react-icons/fa";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch, shallowEqual } from "react-redux";
 import { logout, fetchUserProfile } from "../slices/userSlice";
 import "../styles/Navbar.css";
 import logo from "../assets/logo.png";
 
 const Navbar = () => {
   const dispatch = useDispatch();
-  const { userInfo, token } = useSelector((state) => state.user);
+  const { userInfo, token } = useSelector((state) => state.user, shallowEqual);
+  const cartItems = useSelector((state) => state.cart.items, shallowEqual);
+
   const [showDropdown, setShowDropdown] = useState(false);
 
-  useEffect(() => {
+  const fetchData = useCallback(() => {
     if (token && !userInfo) {
       dispatch(fetchUserProfile());
     }
   }, [dispatch, token, userInfo]);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
   const handleLogout = () => {
     dispatch(logout());
     setShowDropdown(false);
   };
 
-  console.log("User Info in Navbar:", userInfo);
+  const cartItemCount = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
 
   return (
     <nav className="navbar">
@@ -75,11 +84,12 @@ const Navbar = () => {
         </div>
         <Link to="/wishlist" className="icon-link">
           <FaHeart />
-          Wishlist
         </Link>
         <Link to="/cart" className="icon-link">
           <FaShoppingCart />
-          Cart
+          {cartItemCount > 0 && (
+            <span className="item-count">{cartItemCount}</span>
+          )}
         </Link>
       </div>
     </nav>

@@ -9,6 +9,7 @@ const StorePage = () => {
   const { items: products, status, error } = useSelector(
     (state) => state.products
   );
+  const { userInfo } = useSelector((state) => state.user);
 
   useEffect(() => {
     if (status === "idle") {
@@ -21,7 +22,12 @@ const StorePage = () => {
   };
 
   const handleAddToWishlist = (productId) => {
-    dispatch(addToWishlist(productId));
+    if (userInfo) {
+      dispatch(addToWishlist(productId));
+    } else {
+      // Redirect to login or show a message
+      alert("Please log in to add items to your wishlist");
+    }
   };
 
   let content;
@@ -31,32 +37,29 @@ const StorePage = () => {
   } else if (status === "succeeded") {
     content = (
       <div className="product-list">
-        {products.map((product) => {
-          return (
-            <div key={product._id} className="product-item">
-              <img
-                src={product.imgUrls[0]?.url}
-                alt={product.name}
-                style={{ width: "200px", height: "200px" }}
-              />
-              <h3>{product.name}</h3>
-              <p>{product.description}</p>
-              <p>Price: ${product.price}</p>
-              <p>Stock: {product.stock}</p>
-              <p>Material: {product.material}</p>
-              <p>
-                Release Date:{" "}
-                {new Date(product.releaseDate).toLocaleDateString()}
-              </p>
-              <button onClick={() => handleAddToCart(product)}>
-                Add to Cart
-              </button>
-              <button onClick={() => handleAddToWishlist(product._id)}>
-                Add to Wishlist
-              </button>
-            </div>
-          );
-        })}
+        {products.map((product) => (
+          <div key={product._id} className="product-item">
+            <img
+              src={product.imgUrls[0]?.url}
+              alt={product.name}
+              style={{ width: "200px", height: "200px" }}
+            />
+            <h3>{product.name}</h3>
+            <p>{product.description}</p>
+            <p>Price: ${product.price}</p>
+            <p>Stock: {product.stock}</p>
+            <p>Material: {product.material}</p>
+            <p>
+              Release Date: {new Date(product.releaseDate).toLocaleDateString()}
+            </p>
+            <button onClick={() => handleAddToCart(product)}>
+              Add to Cart
+            </button>
+            <button onClick={() => handleAddToWishlist(product._id)}>
+              Add to Wishlist
+            </button>
+          </div>
+        ))}
       </div>
     );
   } else if (status === "failed") {

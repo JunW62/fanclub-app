@@ -16,7 +16,7 @@ export const fetchWishlist = createAsyncThunk(
         },
       };
       const response = await axios.get(`${apiUrl}/api/wishlist`, config);
-      return response.data;
+      return response.data.wishlist;
     } catch (err) {
       if (err.response && err.response.data.message === "jwt expired") {
         console.error("Token expired. Please log in again.");
@@ -29,9 +29,9 @@ export const fetchWishlist = createAsyncThunk(
 // Thunk to add a product to the wishlist
 export const addToWishlist = createAsyncThunk(
   "wishlist/addToWishlist",
-  async (productId, { rejectWithValue, getState }) => {
+  async (productId, { getState, rejectWithValue }) => {
     try {
-      const token = getState().user.token;
+      const { token } = getState().user;
       const config = {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -40,20 +40,16 @@ export const addToWishlist = createAsyncThunk(
       };
 
       const response = await axios.post(
-        `${apiUrl}/api/wishlist`,
+        `${apiUrl}/api/wishlist/add`,
         { productId },
         config
       );
-      if (response.status === 200) {
-        // Handling the "already in wishlist" case
-        return rejectWithValue(response.data.message); // Optionally handle this as a non-error status
-      }
-      return response.data;
-    } catch (err) {
-      if (err.response && err.response.data.message === "jwt expired") {
-        console.error("Token expired. Please log in again.");
-      }
-      return rejectWithValue(err.response ? err.response.data : err.message);
+
+      return response.data.wishlist;
+    } catch (error) {
+      return rejectWithValue(
+        error.response ? error.response.data : error.message
+      );
     }
   }
 );
@@ -71,10 +67,11 @@ export const removeFromWishlist = createAsyncThunk(
         },
       };
       const response = await axios.delete(
-        `${apiUrl}/api/wishlist/${productId}`,
+        `${apiUrl}/api/wishlist/remove/${productId}`,
         config
       );
-      return response.data;
+      console.log("API response:", response.data);
+      return response.data.wishlist;
     } catch (err) {
       if (err.response && err.response.data.message === "jwt expired") {
         console.error("Token expired. Please log in again.");
@@ -90,7 +87,6 @@ const wishlistSlice = createSlice({
     items: [],
     status: "idle",
     error: null,
-    message: null,
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -107,17 +103,12 @@ const wishlistSlice = createSlice({
         state.error = action.payload;
       })
       .addCase(addToWishlist.fulfilled, (state, action) => {
-        if (action.payload.message !== "Product already in wishlist") {
-          state.items = action.payload;
-        }
-        state.message = action.payload.message;
-      })
-      .addCase(addToWishlist.rejected, (state, action) => {
-        state.error = action.payload;
+        state.items = action.payload;
       })
       .addCase(removeFromWishlist.fulfilled, (state, action) => {
-        state.items = state.items.filter(
-          (item) => item.product !== action.payload
+        console.log("Received wishlist after removal:", action.payload);
+        state.items = state.items.filter((item) =>
+          action.payload.includes(typeof item === "string" ? item : item._id)
         );
       });
   },

@@ -11,9 +11,9 @@ const {
 router.get("/", auth, getWishlist);
 
 // Add an item to the wishlist
-router.post("/", auth, addToWishlist);
+router.post("/add", auth, addToWishlist);
 
 // Remove an item from the wishlist
-router.delete("/:id", auth, removeFromWishlist);
+router.delete("/remove/:productId", auth, removeFromWishlist);
 
 module.exports = router;
