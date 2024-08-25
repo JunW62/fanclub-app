@@ -23,6 +23,10 @@ const Navbar = () => {
     fetchData();
   }, [fetchData]);
 
+  useEffect(() => {
+    // console.log("Navbar useEffect - token:", token, "userInfo:", userInfo);
+  }, [token, userInfo]);
+
   const handleLogout = () => {
     dispatch(logout());
     setShowDropdown(false);
