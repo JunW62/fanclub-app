@@ -12,7 +12,7 @@ exports.createOrder = async (req, res) => {
       paymentStatus,
     } = req.body;
 
-    // Calculate total price from items if needed
+    // Calculate total price from items
     // const totalPrice = items.reduce((acc, item) => acc + item.total, 0);
 
     const newOrder = new Order({

@@ -31,7 +31,6 @@ export const addToWishlist = createAsyncThunk(
   "wishlist/addToWishlist",
   async (productId, { rejectWithValue, getState }) => {
     try {
-      //   const productId = "66c8e1587ab1ffe950e6f3de";
       const token = getState().user.token;
       const config = {
         headers: {
@@ -109,7 +108,7 @@ const wishlistSlice = createSlice({
       })
       .addCase(addToWishlist.fulfilled, (state, action) => {
         if (action.payload.message !== "Product already in wishlist") {
-          state.items.push(action.payload.wishlist); // Only update if not a duplicate
+          state.items = action.payload;
         }
         state.message = action.payload.message;
       })
@@ -118,7 +117,7 @@ const wishlistSlice = createSlice({
       })
       .addCase(removeFromWishlist.fulfilled, (state, action) => {
         state.items = state.items.filter(
-          (item) => item.product !== action.payload.product
+          (item) => item.product !== action.payload
         );
       });
   },

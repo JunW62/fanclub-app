@@ -13,7 +13,7 @@ const WishlistPage = () => {
       dispatch(fetchWishlist());
     }
   }, [dispatch, wishlistStatus]);
-
+  console.log(wishlistItems);
   const handleRemoveFromWishlist = (productId) => {
     console.log("Removing product with ID:", productId);
     if (productId) {
@@ -32,7 +32,9 @@ const WishlistPage = () => {
         <ul>
           {wishlistItems.map((item) => (
             <li key={item.product._id}>
+              {console.log(item)}
               <p>{item.product.name}</p>
+              {/* <img src={item.product.imgUrls[0].url} alt="" /> */}
               <button
                 onClick={() => handleRemoveFromWishlist(item.product._id)}
               >

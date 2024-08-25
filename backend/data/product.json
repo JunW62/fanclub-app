@@ -34,5 +34,441 @@
     },
     "material": "Tinplate",
     "releaseDate": "2021-05-07T00:00:00Z"
+  },
+  {
+    "name": "Modern Impression series character badge",
+    "description": "Round Tinplate",
+    "price": 2.09,
+    "category": "Badge",
+    "stock": 150,
+    "imgUrls": [
+      {
+        "url": "https://i.ibb.co/P1cfJgB/1.png",
+        "description": "Front view"
+      }
+    ],
+    "size": {
+      "diameter": 55
+    },
+    "material": "Tinplate",
+    "releaseDate": "2020-12-17T00:00:00Z"
+  },
+  {
+    "name": "Dream Painting series character badge",
+    "description": "Round Tinplate",
+    "price": 2.09,
+    "category": "Badge",
+    "stock": 150,
+    "imgUrls": [
+      {
+        "url": "https://i.ibb.co/8xqVBDZ/2.png",
+        "description": "Front view"
+      }
+    ],
+    "size": {
+      "diameter": 58
+    },
+    "material": "Tinplate",
+    "releaseDate": "2020-12-17T00:00:00Z"
+  },
+  {
+    "name": "Double Q version square badge",
+    "description": "Square Tinplate",
+    "price": 2.81,
+    "category": "Badge",
+    "stock": 150,
+    "imgUrls": [
+      {
+        "url": "https://i.ibb.co/ZVzQLk0/3.png",
+        "description": "Front view"
+      }
+    ],
+    "size": {
+      "height": 55,
+      "width": 55
+    },
+    "material": "Tinplate",
+    "releaseDate": "2020-12-17T00:00:00Z"
+  },
+  {
+    "name": "birthday series limited edition badge",
+    "description": "Round Tinplate",
+    "price": 2.09,
+    "category": "Badge",
+    "stock": 150,
+    "imgUrls": [
+      {
+        "url": "https://i.ibb.co/thttdp8/4.png",
+        "description": "Front view"
+      }
+    ],
+    "size": {
+      "diameter": 58
+    },
+    "material": "Tinplate",
+    "releaseDate": "2020-12-29T00:00:00Z"
+  },
+  {
+    "name": "birthday series limited edition metal imitation enamel pendant",
+    "description": "Widgets",
+    "price": 2.09,
+    "category": "Widgets",
+    "stock": 150,
+    "imgUrls": [
+      {
+        "url": "https://i.ibb.co/y0dM1SH/5.png",
+        "description": "Front view"
+      }
+    ],
+    "size": {
+      "height": 70,
+      "width": 50
+    },
+    "material": "Tinplate",
+    "releaseDate": "2020-12-29T00:00:00Z"
+  },
+  {
+    "name": "Paradise Streamer Laser Badge",
+    "description": "Round Tinplate",
+    "price": 2.09,
+    "category": "Badge",
+    "stock": 150,
+    "imgUrls": [
+      {
+        "url": "https://i.ibb.co/ry4rXyc/6.png",
+        "description": "Front view"
+      }
+    ],
+    "size": {
+      "diameter": 58
+    },
+    "material": "Tinplate",
+    "releaseDate": "2021-04-09T00:00:00Z"
+  },
+  {
+    "name": "Ye Sai Continent Character Impression Metal Badge",
+    "description": "Tinplate",
+    "price": 4.91,
+    "category": "Badge",
+    "stock": 150,
+    "imgUrls": [
+      {
+        "url": "https://i.ibb.co/1RF43QN/7.png",
+        "description": "Front view"
+      }
+    ],
+    "size": {
+      "height": 57,
+      "width": 64
+    },
+    "material": "Tinplate",
+    "releaseDate": "2021-04-09T00:00:00Z"
+  },
+  {
+    "name": "Fairy Tale Adventure series character badge",
+    "description": "Tinplate",
+    "price": 2.09,
+    "category": "Badge",
+    "stock": 150,
+    "imgUrls": [
+      {
+        "url": "https://i.ibb.co/L8JN8Xp/8.png",
+        "description": "Front view"
+      }
+    ],
+    "size": {
+      "diameter": 58
+    },
+    "material": "Tinplate",
+    "releaseDate": "2021-05-07T00:00:00Z"
+  },
+  {
+    "name": "CP28 Fenghua-Danqing series badge",
+    "description": "Tinplate",
+    "price": 2.81,
+    "category": "Badge",
+    "stock": 150,
+    "imgUrls": [
+      {
+        "url": "https://i.ibb.co/0CsLfCQ/9.png",
+        "description": "Front view"
+      }
+    ],
+    "size": {
+      "diameter": 58
+    },
+    "material": "Tinplate",
+    "releaseDate": "2021-06-12T00:00:00Z"
+  },
+  {
+    "name": "animatecafe Summer Date series character badges",
+    "description": "Tinplate",
+    "price": 4.18,
+    "category": "Badge",
+    "stock": 150,
+    "imgUrls": [
+      {
+        "url": "https://i.ibb.co/XVvghzt/10.png",
+        "description": "Front view"
+      }
+    ],
+    "size": {
+      "diameter": 56
+    },
+    "material": "Tinplate",
+    "releaseDate": "2021-07-15T00:00:00Z"
+  },
+
+  {
+    "name": "animatecafe Summer Date series character badges - Q version",
+    "description": "Tinplate",
+    "price": 4.18,
+    "category": "Badge",
+    "stock": 150,
+    "imgUrls": [
+      {
+        "url": "https://i.ibb.co/tqd0csq/11.png",
+        "description": "Front view"
+      }
+    ],
+    "size": {
+      "diameter": 56
+    },
+    "material": "Tinplate",
+    "releaseDate": "2021-07-15T00:00:00Z"
+  },
+  {
+    "name": "Time invitation special badge",
+    "description": "Tinplate",
+    "price": 2.09,
+    "category": "Badge",
+    "stock": 150,
+    "imgUrls": [
+      {
+        "url": "https://i.ibb.co/LCjwLNd/12.png",
+        "description": "Front view"
+      }
+    ],
+    "size": {
+      "height": 50,
+      "width": 50
+    },
+    "material": "Tinplate",
+    "releaseDate": "2021-09-30T00:00:00Z"
+  },
+  {
+    "name": "Blue Island Series Badge",
+    "description": "Tinplate",
+    "price": 2.09,
+    "category": "Badge",
+    "stock": 150,
+    "imgUrls": [
+      {
+        "url": "https://i.ibb.co/D1SghL1/13.png",
+        "description": "Front view"
+      }
+    ],
+    "size": {
+      "diameter": 58
+    },
+    "material": "Tinplate",
+    "releaseDate": "2021-12-10T00:00:00Z"
+  },
+  {
+    "name": "Blue Island Series Badge-Breakthrough",
+    "description": "Tinplate",
+    "price": 2.09,
+    "category": "Badge",
+    "stock": 150,
+    "imgUrls": [
+      {
+        "url": "https://i.ibb.co/d4xLJ3c/14.png",
+        "description": "Front view"
+      }
+    ],
+    "size": {
+      "diameter": 58
+    },
+    "material": "Tinplate",
+    "releaseDate": "2021-12-10T00:00:00Z"
+  },
+  {
+    "name": "Private Holiday Series Badge-Breakthrough (rush)",
+    "description": "Tinplate",
+    "price": 2.09,
+    "category": "Badge",
+    "stock": 150,
+    "imgUrls": [
+      {
+        "url": "https://i.ibb.co/BwBFGPg/15.png",
+        "description": "Front view"
+      }
+    ],
+    "size": {
+      "diameter": 58
+    },
+    "material": "Tinplate",
+    "releaseDate": "2021-12-10T00:00:00Z"
+  },
+  {
+    "name": "Private Holiday Series Badge-Breakthrough (after the sudden)",
+    "description": "Tinplate",
+    "price": 2.09,
+    "category": "Badge",
+    "stock": 150,
+    "imgUrls": [
+      {
+        "url": "https://i.ibb.co/4W0S7MX/16.png",
+        "description": "Front view"
+      }
+    ],
+    "size": {
+      "diameter": 58
+    },
+    "material": "Tinplate",
+    "releaseDate": "2021-12-10T00:00:00Z"
+  },
+  {
+    "name": "[2021] Cael Birthday Series Limited Badge",
+    "description": "Tinplate",
+    "price": 2.09,
+    "category": "Badge",
+    "stock": 150,
+    "imgUrls": [
+      {
+        "url": "https://i.ibb.co/xHd6w0Y/17.png",
+        "description": "Front view"
+      }
+    ],
+    "size": {
+      "diameter": 58
+    },
+    "material": "Tinplate",
+    "releaseDate": "2021-12-29T00:00:00Z"
+  },
+  {
+    "name": "Future Band Series Badge",
+    "description": "Tinplate",
+    "price": 3.51,
+    "category": "Badge",
+    "stock": 150,
+    "imgUrls": [
+      {
+        "url": "https://i.ibb.co/g7YrYFV/18.png",
+        "description": "Front view"
+      }
+    ],
+    "size": {
+      "diameter": 58
+    },
+    "material": "Tinplate",
+    "releaseDate": "2022-02-26T00:00:00Z"
+  },
+  {
+    "name": "Stay Together Forever Series Badge Set",
+    "description": "Tinplate",
+    "price": 4.91,
+    "category": "Badge",
+    "stock": 150,
+    "imgUrls": [
+      {
+        "url": "https://i.ibb.co/DWPhd2H/19.png",
+        "description": "Front view"
+      }
+    ],
+    "size": {
+      "diameter": 58
+    },
+    "material": "Tinplate",
+    "releaseDate": "2022-03-04T00:00:00Z"
+  },
+  {
+    "name": "White Day Series Tinplate Badge",
+    "description": "Tinplate",
+    "price": 2.81,
+    "category": "Badge",
+    "stock": 150,
+    "imgUrls": [
+      {
+        "url": "https://i.ibb.co/XXndhHT/20.png",
+        "description": "Front view"
+      }
+    ],
+    "size": {
+      "diameter": 58
+    },
+    "material": "Tinplate",
+    "releaseDate": "2022-03-04T00:00:00Z"
+  },
+  {
+    "name": "Today's Baggage series character standee",
+    "description": "Acrylic",
+    "price": 5.62,
+    "category": "Signboard",
+    "stock": 150,
+    "imgUrls": [
+      {
+        "url": "https://i.ibb.co/3ySrzxX/21.png",
+        "description": "Front view"
+      }
+    ],
+    "size": {
+      "height": 160
+    },
+    "material": "Tinplate",
+    "releaseDate": "2020-12-17T00:00:00Z"
+  },
+  {
+    "name": "Yesai Continent series character standee",
+    "description": "Acrylic",
+    "price": 5.62,
+    "category": "Signboard",
+    "stock": 150,
+    "imgUrls": [
+      {
+        "url": "https://i.ibb.co/hg6pVc2/22.png",
+        "description": "Front view"
+      }
+    ],
+    "size": {
+      "height": 160
+    },
+    "material": "Tinplate",
+    "releaseDate": "2020-12-17T00:00:00Z"
+  },
+  {
+    "name": "Cael Birthday Series Limited Acrylic Plywood",
+    "description": "Acrylic",
+    "price": 6.88,
+    "category": "Daily necessities",
+    "stock": 150,
+    "imgUrls": [
+      {
+        "url": "https://i.ibb.co/2YZ9fjQ/23.png",
+        "description": "Front view"
+      }
+    ],
+    "size": {
+      "height": 297,
+      "width": 210
+    },
+    "material": "Tinplate",
+    "releaseDate": "2020-12-29T00:00:00Z"
+  },
+  {
+    "name": "Cael Birthday Series Limited Gift Box",
+    "description": "Acrylic",
+    "price": 15.3,
+    "category": "Gift Box",
+    "stock": 150,
+    "imgUrls": [
+      {
+        "url": "https://i.ibb.co/Vm4P1Lz/24.png",
+        "description": "Front view"
+      }
+    ],
+    "size": { "height": 500, "width": 500 },
+    "material": "Tinplate",
+    "releaseDate": "2020-12-29T00:00:00Z"
   }
 ]

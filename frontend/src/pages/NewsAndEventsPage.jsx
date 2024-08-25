@@ -1,7 +1,15 @@
 import React from "react";
+import NewsEventsTabs from "../components/NewsAndEventsTab";
+import { useNews } from "../context/NewsContex";
 
-function NewsAndEventsPage() {
-  return <div>NewsAndEventsPage</div>;
-}
+const NewsAndEventsPage = () => {
+  const { newsData } = useNews();
+
+  return (
+    <div>
+      <NewsEventsTabs newsData={newsData} />
+    </div>
+  );
+};
 
 export default NewsAndEventsPage;

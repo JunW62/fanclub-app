@@ -1,22 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaUser, FaShoppingCart, FaHeart } from "react-icons/fa";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../slices/userSlice";
 import "../styles/Navbar.css";
 import logo from "../assets/logo.png";
 
 const Navbar = () => {
-  // Get the number of items in the cart
-  const cartItems = useSelector((state) => state.cart.items);
+  const dispatch = useDispatch();
+  const { userInfo } = useSelector((state) => state.user);
+  const [showDropdown, setShowDropdown] = useState(false);
 
-  // Calculate the total number of items in the cart
-  const totalItems = cartItems.reduce(
-    (total, item) => total + item.quantity,
-    0
-  );
-  const wishlistItemsCount = useSelector(
-    (state) => state.wishlist.items.length
-  );
+  const handleLogout = () => {
+    dispatch(logout());
+    setShowDropdown(false);
+  };
 
   return (
     <nav className="navbar">
@@ -42,26 +40,39 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-right">
-        <div className="user-menu">
-          <FaUser className="user-icon" />
-          <div className="dropdown-content">
-            <Link to="/login">Login</Link>
-            <Link to="/signup">Sign Up</Link>
-            <Link to="/order-history">Order</Link>
-          </div>
-        </div>
         <Link to="/wishlist" className="icon-link">
           <FaHeart />
-          <span className="icon-badge">
-            {wishlistItemsCount > 9 ? "9+" : wishlistItemsCount}
-          </span>
+          Wishlist
         </Link>
         <Link to="/cart" className="icon-link">
           <FaShoppingCart />
-          <span className="icon-badge">
-            {totalItems > 9 ? "9+" : totalItems}
-          </span>
+          Cart
         </Link>
+        <div className="user-menu">
+          {userInfo ? (
+            <div>
+              <button
+                onClick={() => setShowDropdown(!showDropdown)}
+                className="user-button"
+              >
+                {userInfo.username}
+              </button>
+              {showDropdown && (
+                <div className="dropdown-menu">
+                  <Link to="/profile" onClick={() => setShowDropdown(false)}>
+                    Profile
+                  </Link>
+                  <button onClick={handleLogout}>Logout</button>
+                </div>
+              )}
+            </div>
+          ) : (
+            <Link to="/login" className="icon-link">
+              <FaUser />
+              Login
+            </Link>
+          )}
+        </div>
       </div>
     </nav>
   );

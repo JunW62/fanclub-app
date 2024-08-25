@@ -3,6 +3,7 @@ const connectDB = require("./db/conn");
 const userRoutes = require("./routes/userRoutes.js");
 const productRoutes = require("./routes/productRoutes.js");
 const orderRoutes = require("./routes/orderRoutes.js");
+const wishlistRoutes = require("./routes/wishlistRoutes");
 const cors = require("cors");
 
 const app = express();
@@ -44,6 +45,7 @@ app.use(
 app.use("/api/users", userRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api", orderRoutes);
+app.use("/api/wishlist", wishlistRoutes);
 
 // app.get("/api/test", (req, res) => {
 //   res.send("Proxy is working!");
