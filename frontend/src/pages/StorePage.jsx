@@ -1,15 +1,30 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchProducts } from "../slices/productsSlice";
-import { addToCart } from "../slices/cartSlice";
-import { addToWishlist } from "../slices/wishlistSlice";
+import ProductList from "../components/ProductList";
+import PageHeader from "../components/Banner";
 
 const StorePage = () => {
   const dispatch = useDispatch();
-  const { items: products, status, error } = useSelector(
+  const { items: allProducts, status, error } = useSelector(
     (state) => state.products
   );
-  const { userInfo } = useSelector((state) => state.user);
+  const [newInProducts, setNewInProducts] = useState([]);
+  const [bestSellers, setBestSellers] = useState([]);
+
+  const newInIds = [
+    "66c7792b8bc8c95f42992511",
+    "66cb8f41db3640b593ed114c",
+    "66cb8f41db3640b593ed1150",
+    "66cb8f42db3640b593ed1164",
+  ];
+
+  const bestSellerIds = [
+    "66cb8f41db3640b593ed1148",
+    "66cb8f42db3640b593ed115c",
+    "66cb8f42db3640b593ed1160",
+    "66cb8f42db3640b593ed1194",
+  ];
 
   useEffect(() => {
     if (status === "idle") {
@@ -17,59 +32,38 @@ const StorePage = () => {
     }
   }, [status, dispatch]);
 
-  const handleAddToCart = (product) => {
-    dispatch(addToCart(product));
-  };
-
-  const handleAddToWishlist = (productId) => {
-    if (userInfo) {
-      dispatch(addToWishlist(productId));
-    } else {
-      // Redirect to login or show a message
-      alert("Please log in to add items to your wishlist");
+  useEffect(() => {
+    if (status === "succeeded") {
+      const newIn = allProducts.filter((product) =>
+        newInIds.includes(product._id)
+      );
+      const bestSellers = allProducts.filter((product) =>
+        bestSellerIds.includes(product._id)
+      );
+      setNewInProducts(newIn);
+      setBestSellers(bestSellers);
     }
-  };
-
-  let content;
+  }, [allProducts, status]);
 
   if (status === "loading") {
-    content = <p>Loading products...</p>;
-  } else if (status === "succeeded") {
-    content = (
-      <div className="product-list">
-        {products.map((product) => (
-          <div key={product._id} className="product-item">
-            <img
-              src={product.imgUrls[0]?.url}
-              alt={product.name}
-              style={{ width: "200px", height: "200px" }}
-            />
-            <h3>{product.name}</h3>
-            <p>{product.description}</p>
-            <p>Price: ${product.price}</p>
-            <p>Stock: {product.stock}</p>
-            <p>Material: {product.material}</p>
-            <p>
-              Release Date: {new Date(product.releaseDate).toLocaleDateString()}
-            </p>
-            <button onClick={() => handleAddToCart(product)}>
-              Add to Cart
-            </button>
-            <button onClick={() => handleAddToWishlist(product._id)}>
-              Add to Wishlist
-            </button>
-          </div>
-        ))}
-      </div>
-    );
-  } else if (status === "failed") {
-    content = <p>{error}</p>;
+    return <p>Loading products...</p>;
+  }
+
+  if (status === "failed") {
+    return <p>{error}</p>;
   }
 
   return (
     <div className="store-page">
-      <h2>Store</h2>
-      {content}
+      <PageHeader title="Store" />
+      <div className="store-content">
+        <h2 className="section-title">New In</h2>
+        <ProductList products={newInProducts} />
+        <h2 className="section-title">Best Sellers</h2>
+        <ProductList products={bestSellers} />
+        <h2 className="section-title">All Products</h2>
+        <ProductList products={allProducts} />
+      </div>
     </div>
   );
 };

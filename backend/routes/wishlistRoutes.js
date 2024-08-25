@@ -5,6 +5,7 @@ const {
   addToWishlist,
   getWishlist,
   removeFromWishlist,
+  toggleWishlistItem,
 } = require("../controllers/wishlistController");
 
 // Get the wishlist for the logged-in user
@@ -15,5 +16,8 @@ router.post("/add", auth, addToWishlist);
 
 // Remove an item from the wishlist
 router.delete("/remove/:productId", auth, removeFromWishlist);
+
+// Toggle an item in the wishlist (add if not present, remove if present)
+router.post("/toggle", auth, toggleWishlistItem);
 
 module.exports = router;

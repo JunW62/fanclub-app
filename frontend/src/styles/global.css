@@ -91,20 +91,24 @@
   color: #7f8ba3;
   font-size: 14px;
 }
-/* Banner */
-.banner {
-  background-image: url("../assets/banner-background.jpg");
-  background-size: cover;
-  background-position: center;
-  height: 200px;
+/* Header */
+.page-header {
   display: flex;
-  justify-content: center;
   align-items: center;
-  color: white;
-  text-align: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: white;
+  margin-bottom: 20px;
 }
 
-.banner h1 {
-  font-size: 2.5rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+.header-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.header-title {
+  font-size: 3rem;
+  color: #333;
 }

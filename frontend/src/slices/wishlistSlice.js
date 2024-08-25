@@ -81,6 +81,25 @@ export const removeFromWishlist = createAsyncThunk(
   }
 );
 
+export const toggleWishlistItem = createAsyncThunk(
+  "wishlist/toggleItem",
+  async (productId, { getState }) => {
+    const { user } = getState();
+    const config = {
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+      },
+    };
+
+    const response = await axios.post(
+      `${apiUrl}/api/wishlist/toggle`,
+      { productId },
+      config
+    );
+    return response.data;
+  }
+);
+
 const wishlistSlice = createSlice({
   name: "wishlist",
   initialState: {
@@ -110,6 +129,12 @@ const wishlistSlice = createSlice({
         state.items = state.items.filter((item) =>
           action.payload.includes(typeof item === "string" ? item : item._id)
         );
+      })
+      .addCase(toggleWishlistItem.fulfilled, (state, action) => {
+        state.items = Array.isArray(action.payload.wishlist)
+          ? action.payload.wishlist
+          : [];
+        state.status = "succeeded";
       });
   },
 });

@@ -81,3 +81,48 @@ exports.removeFromWishlist = async (req, res) => {
     res.status(500).json({ message: "Server error", error: error.message });
   }
 };
+
+// Toggle an item in the wishlist
+exports.toggleWishlistItem = async (req, res) => {
+  try {
+    const { productId } = req.body;
+    const userId = req.user.id;
+
+    // Check if the product exists
+    const product = await Product.findById(productId);
+    if (!product) {
+      return res.status(404).json({ message: "Product not found" });
+    }
+
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const wishlistIndex = user.wishlist.indexOf(productId);
+
+    if (wishlistIndex > -1) {
+      // Product is in wishlist, remove it
+      user.wishlist.splice(wishlistIndex, 1);
+    } else {
+      // Product is not in wishlist, add it
+      user.wishlist.push(productId);
+    }
+
+    await user.save();
+
+    // Populate the wishlist with product details before sending the response
+    await user.populate("wishlist");
+
+    res.status(200).json({
+      message:
+        wishlistIndex > -1
+          ? "Product removed from wishlist"
+          : "Product added to wishlist",
+      wishlist: user.wishlist,
+    });
+  } catch (error) {
+    console.error("Error in toggleWishlistItem:", error);
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
