@@ -1,20 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaUser, FaShoppingCart, FaHeart } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
-import { logout } from "../slices/userSlice";
+import { logout, fetchUserProfile } from "../slices/userSlice";
 import "../styles/Navbar.css";
 import logo from "../assets/logo.png";
 
 const Navbar = () => {
   const dispatch = useDispatch();
-  const { userInfo } = useSelector((state) => state.user);
+  const { userInfo, token } = useSelector((state) => state.user);
   const [showDropdown, setShowDropdown] = useState(false);
+
+  useEffect(() => {
+    if (token && !userInfo) {
+      dispatch(fetchUserProfile());
+    }
+  }, [dispatch, token, userInfo]);
 
   const handleLogout = () => {
     dispatch(logout());
     setShowDropdown(false);
   };
+
+  console.log("User Info in Navbar:", userInfo);
 
   return (
     <nav className="navbar">
@@ -40,14 +48,6 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-right">
-        <Link to="/wishlist" className="icon-link">
-          <FaHeart />
-          Wishlist
-        </Link>
-        <Link to="/cart" className="icon-link">
-          <FaShoppingCart />
-          Cart
-        </Link>
         <div className="user-menu">
           {userInfo ? (
             <div>
@@ -55,7 +55,7 @@ const Navbar = () => {
                 onClick={() => setShowDropdown(!showDropdown)}
                 className="user-button"
               >
-                {userInfo.username}
+                {userInfo.username || userInfo.email}
               </button>
               {showDropdown && (
                 <div className="dropdown-menu">
@@ -73,6 +73,14 @@ const Navbar = () => {
             </Link>
           )}
         </div>
+        <Link to="/wishlist" className="icon-link">
+          <FaHeart />
+          Wishlist
+        </Link>
+        <Link to="/cart" className="icon-link">
+          <FaShoppingCart />
+          Cart
+        </Link>
       </div>
     </nav>
   );

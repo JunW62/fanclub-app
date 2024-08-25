@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-const apiUril = "http://localhost:3000";
+import { loginUser } from "../slices/userSlice";
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { userInfo, status, error } = useSelector((state) => state.user);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -18,27 +18,14 @@ const LoginPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Submitting login form with:", formData);
-    try {
-      const response = await axios.post(`${apiUril}/api/users/login`, {
-        email: formData.email,
-        password: formData.password,
-      });
-
-      setSuccess(response.data.message);
-      setError("");
-      // Redirect to profile page after successful login
-      navigate("/profile");
-
-      // Store the token in localStorage or sessionStorage
-      localStorage.setItem("token", response.data.token);
-
-      // Optionally, redirect the user after successful login
-    } catch (err) {
-      setError(err.response?.data?.message || "An error occurred");
-      setSuccess("");
-    }
+    dispatch(loginUser(formData));
   };
+
+  useEffect(() => {
+    if (userInfo) {
+      navigate("/profile");
+    }
+  }, [userInfo, navigate]);
 
   return (
     <div className="login-container">
@@ -67,7 +54,7 @@ const LoginPage = () => {
           />
         </div>
         {error && <p className="error">{error}</p>}
-        {success && <p className="success">{success}</p>}
+        {status === "loading" && <p>Logging in...</p>}
         <button type="submit">Login</button>
       </form>
     </div>

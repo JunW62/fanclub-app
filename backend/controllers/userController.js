@@ -53,6 +53,8 @@ exports.login = async (req, res) => {
     const payload = {
       user: {
         id: user.id,
+        email: user.email,
+        username: user.username, // Add username to the payload
       },
     };
 
@@ -64,7 +66,11 @@ exports.login = async (req, res) => {
         if (err) throw err;
         res.json({
           token,
-          user: { id: user.id, email: user.email, name: user.name },
+          user: {
+            id: user.id,
+            email: user.email,
+            username: user.username,
+          },
         });
       }
     );

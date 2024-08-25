@@ -14,7 +14,7 @@ export const loginUser = createAsyncThunk(
       );
       const { token, user } = response.data;
       localStorage.setItem("token", token);
-      return { ...user, token };
+      return { token, user };
     } catch (err) {
       return rejectWithValue(err.response.data);
     }
@@ -30,9 +30,10 @@ export const fetchUserProfile = createAsyncThunk(
       const response = await axios.get(`${apiUril}/api/users/profile`, {
         headers: { Authorization: `Bearer ${token}` },
       });
+      console.log("Fetched user profile:", response.data);
       return response.data;
     } catch (error) {
-      return rejectWithValue(error.response.data);
+      return rejectWithValue(error.response?.data || error.message);
     }
   }
 );
@@ -92,8 +93,9 @@ const userSlice = createSlice({
       })
       .addCase(loginUser.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.userInfo = action.payload;
+        state.userInfo = action.payload.user;
         state.token = action.payload.token;
+        console.log("User info after login:", state.userInfo);
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.status = "failed";
@@ -105,6 +107,7 @@ const userSlice = createSlice({
       .addCase(fetchUserProfile.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.userInfo = action.payload;
+        console.log("Updated userInfo in Redux:", state.userInfo);
       })
       .addCase(fetchUserProfile.rejected, (state, action) => {
         state.status = "failed";

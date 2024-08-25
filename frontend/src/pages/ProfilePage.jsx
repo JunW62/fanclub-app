@@ -22,7 +22,7 @@ function ProfilePage() {
       setFormData({
         name: userInfo.name || "",
         email: userInfo.email || "",
-        // Initialize more fields here
+        username: userInfo.username || "", // Include username
       });
     }
   }, [userInfo]);
@@ -61,6 +61,10 @@ function ProfilePage() {
           <p>
             <strong>Email:</strong> {userInfo.email}
           </p>
+          <p>
+            <strong>Username:</strong> {userInfo.username}{" "}
+            {/* Display username */}
+          </p>
 
           <button onClick={() => setEditMode(true)}>Edit Profile</button>
         </div>
@@ -83,6 +87,16 @@ function ProfilePage() {
               id="email"
               name="email"
               value={formData.email}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div>
+            <label htmlFor="username">Username:</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              value={formData.username}
               onChange={handleInputChange}
             />
           </div>
