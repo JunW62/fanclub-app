@@ -1,7 +1,10 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { removeFromCart, updateCartQuantity } from "../slices/cartSlice";
+import PageHeader from "../components/Banner";
+import { FaTrash, FaMinus, FaPlus } from "react-icons/fa";
+import "../styles/Cart.css";
 
 const CartPage = () => {
   const dispatch = useDispatch();
@@ -23,56 +26,67 @@ const CartPage = () => {
   };
 
   const handleCheckout = () => {
-    // Navigate to the checkout page
     navigate("/checkout");
   };
 
   return (
     <div className="cart-page">
-      <h2>Your Shopping Cart</h2>
-      {cartItems.length === 0 ? (
-        <p>Your cart is empty.</p>
-      ) : (
-        <div className="cart-items">
-          {cartItems.map((item) => (
-            <div key={item._id} className="cart-item">
-              <img
-                src={item.imgUrls[0]?.url}
-                alt={item.name}
-                style={{ width: "100px", height: "100px" }}
-              />
-              <div className="cart-item-details">
-                <h3>{item.name}</h3>
-                <p>Price: ${item.price}</p>
-                <div className="quantity-control">
-                  <label htmlFor={`quantity-${item._id}`}>Quantity: </label>
-                  <input
-                    type="number"
-                    id={`quantity-${item._id}`}
-                    value={item.quantity}
-                    min="1"
-                    onChange={(e) =>
-                      handleQuantityChange(item._id, parseInt(e.target.value))
-                    }
+      <PageHeader title="Your Shopping Cart" />
+      <div className="cart-content">
+        {cartItems.length === 0 ? (
+          <p className="empty-cart">Your cart is empty.</p>
+        ) : (
+          <>
+            <div className="cart-items">
+              {cartItems.map((item) => (
+                <div key={item._id} className="cart-item">
+                  <img
+                    src={item.imgUrls[0]?.url}
+                    alt={item.name}
+                    className="cart-item-image"
                   />
+                  <div className="cart-item-details">
+                    <h3 className="cart-item-name">{item.name}</h3>
+                    <p className="cart-item-price">
+                      ${item.price.toFixed(2)} USD
+                    </p>
+                    <div className="quantity-control">
+                      <button
+                        onClick={() =>
+                          handleQuantityChange(item._id, item.quantity - 1)
+                        }
+                        disabled={item.quantity <= 1}
+                      >
+                        <FaMinus />
+                      </button>
+                      <span>{item.quantity}</span>
+                      <button
+                        onClick={() =>
+                          handleQuantityChange(item._id, item.quantity + 1)
+                        }
+                      >
+                        <FaPlus />
+                      </button>
+                    </div>
+                  </div>
+                  <button
+                    className="remove-button"
+                    onClick={() => handleRemove(item._id)}
+                  >
+                    <FaTrash />
+                  </button>
                 </div>
-                <button
-                  className="remove-button"
-                  onClick={() => handleRemove(item._id)}
-                >
-                  Remove
-                </button>
-              </div>
+              ))}
             </div>
-          ))}
-          <div className="cart-total">
-            <h3>Total: ${calculateTotal()}</h3>
-          </div>
-          <button className="checkout-button" onClick={handleCheckout}>
-            Proceed to Checkout
-          </button>
-        </div>
-      )}
+            <div className="cart-summary">
+              <h3>Total: ${calculateTotal()}</h3>
+              <button className="checkout-button" onClick={handleCheckout}>
+                Proceed to Checkout
+              </button>
+            </div>
+          </>
+        )}
+      </div>
     </div>
   );
 };

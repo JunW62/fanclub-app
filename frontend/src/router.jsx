@@ -14,7 +14,7 @@ import EditProductPage from "./pages/EditProductPage";
 import GalleryPage from "./pages/GalleryPage";
 import ProfilePage from "./pages/ProfilePage";
 import CheckoutPage from "./pages/CheckoutPage";
-import OrderHistoryPage from "./pages/OrderHistoryPage";
+import OrderPage from "./pages/OrderPage";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
@@ -35,7 +35,7 @@ const AppRouter = () => {
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
-        <Route path="/order-history" element={<OrderHistoryPage />} />
+        <Route path="/orders" element={<OrderPage />} />
         <Route path="/edit-product/:id" element={<EditProductPage />} />
         {/* Protected Routes */}
         <Route

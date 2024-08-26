@@ -1,0 +1,128 @@
+.order-history-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.order-history-list {
+  margin-top: 40px;
+}
+
+.order-history-no-orders {
+  text-align: center;
+  font-size: 18px;
+  color: #666;
+}
+
+.order-history-item {
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.order-history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.order-history-header h3 {
+  font-size: 20px;
+  color: #333;
+}
+
+.order-history-date {
+  font-size: 14px;
+  color: #666;
+}
+
+.order-history-details {
+  margin-bottom: 20px;
+}
+
+.order-history-product {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.order-history-product-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  margin-right: 20px;
+  border-radius: 4px;
+}
+
+.order-history-product-info h4 {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.order-history-product-info p {
+  font-size: 14px;
+  color: #666;
+  margin: 2px 0;
+}
+
+.order-history-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+}
+
+.order-history-total {
+  font-size: 18px;
+  color: #333;
+}
+
+.order-history-status {
+  font-size: 16px;
+  color: #4caf50;
+}
+
+.order-history-loading,
+.order-history-error {
+  text-align: center;
+  font-size: 18px;
+  margin-top: 40px;
+}
+
+.order-history-error {
+  color: #ff4d4d;
+}
+
+@media (max-width: 768px) {
+  .order-history-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .order-history-date {
+    margin-top: 5px;
+  }
+
+  .order-history-product {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .order-history-product-image {
+    margin-bottom: 10px;
+  }
+
+  .order-history-summary {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .order-history-status {
+    margin-top: 5px;
+  }
+}

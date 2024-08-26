@@ -56,6 +56,41 @@ export const fetchOrdersByUser = createAsyncThunk(
   }
 );
 
+export const fetchUserOrders = createAsyncThunk(
+  "orders/fetchUserOrders",
+  async (userId, { rejectWithValue, getState }) => {
+    try {
+      const { token } = getState().user;
+      if (!token) {
+        throw new Error("No token found. User might not be logged in.");
+      }
+
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+
+      const response = await axios.get(
+        `${apiUrl}/api/orders/user/${userId}`,
+        config
+      );
+
+      console.log("Response received:", response);
+
+      // The data is directly in response.data, no need to access .data again
+      return response.data;
+    } catch (error) {
+      console.error("Error in fetchUserOrders:", error);
+      return rejectWithValue(
+        error.response?.data || {
+          message: error.message || "Failed to fetch orders",
+        }
+      );
+    }
+  }
+);
+
 const orderSlice = createSlice({
   name: "orders",
   initialState: {
@@ -80,14 +115,31 @@ const orderSlice = createSlice({
       })
       .addCase(fetchOrdersByUser.pending, (state) => {
         state.status = "loading";
+        state.error = null;
       })
       .addCase(fetchOrdersByUser.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.orders = action.payload; // Store the fetched orders
+        state.error = null;
       })
       .addCase(fetchOrdersByUser.rejected, (state, action) => {
         state.status = "failed";
-        state.error = action.payload;
+        state.error = action.payload || "Failed to fetch orders";
+      })
+      .addCase(fetchUserOrders.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchUserOrders.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.orders = action.payload; // Store the fetched orders
+        state.error = null;
+      })
+      .addCase(fetchUserOrders.rejected, (state, action) => {
+        state.status = "failed";
+        state.error =
+          action.payload?.message ||
+          action.error?.message ||
+          "An unknown error occurred";
       });
   },
 });

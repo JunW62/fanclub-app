@@ -1,6 +1,9 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchWishlist, removeFromWishlist } from "../slices/wishlistSlice";
+import { addToCart } from "../slices/cartSlice";
+import { FaTrash, FaCartPlus } from "react-icons/fa";
+import "../styles/Wishlist.css";
 
 const Wishlist = () => {
   const dispatch = useDispatch();
@@ -13,13 +16,12 @@ const Wishlist = () => {
     }
   }, [dispatch, userInfo]);
 
-  useEffect(() => {
-    console.log("Wishlist items:", items);
-  }, [items]);
-
   const handleRemove = (productId) => {
-    console.log("Removing item from wishlist:", productId);
     dispatch(removeFromWishlist(productId));
+  };
+
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
   };
 
   if (status === "loading") return <div>Loading...</div>;
@@ -28,48 +30,40 @@ const Wishlist = () => {
 
   return (
     <div className="wishlist">
-      <h2>My Wishlist</h2>
       {items.length === 0 ? (
-        <p>Your wishlist is empty.</p>
+        <p className="empty-wishlist">Your wishlist is empty.</p>
       ) : (
-        <ul>
+        <div className="wishlist-grid">
           {items.map((item) => (
-            <li key={typeof item === "string" ? item : item._id}>
-              {typeof item === "object" &&
-              item.imgUrls &&
-              item.imgUrls.length > 0 ? (
-                <img
-                  src={item.imgUrls[0].url}
-                  alt={item.name}
-                  style={{ width: "100px", height: "100px" }}
-                />
-              ) : (
-                <div
-                  style={{
-                    width: "100px",
-                    height: "100px",
-                    backgroundColor: "#ccc",
-                  }}
-                >
-                  No Image
+            <div key={item._id} className="wishlist-item">
+              <img
+                src={item.imgUrls[0]?.url}
+                alt={item.name}
+                className="wishlist-item-image"
+              />
+              <div className="wishlist-item-details">
+                <h3 className="wishlist-item-name">{item.name}</h3>
+                <p className="wishlist-item-price">
+                  ${item.price.toFixed(2)} USD
+                </p>
+                <div className="wishlist-item-actions">
+                  <button
+                    className="wishlist-action-btn add-to-cart"
+                    onClick={() => handleAddToCart(item)}
+                  >
+                    <FaCartPlus /> Add to Cart
+                  </button>
+                  <button
+                    className="wishlist-action-btn remove"
+                    onClick={() => handleRemove(item._id)}
+                  >
+                    <FaTrash /> Remove
+                  </button>
                 </div>
-              )}
-              <div>
-                <h3>
-                  {typeof item === "object" ? item.name : "Product ID: " + item}
-                </h3>
-                <p>Price: ${typeof item === "object" ? item.price : "N/A"}</p>
-                <button
-                  onClick={() =>
-                    handleRemove(typeof item === "string" ? item : item._id)
-                  }
-                >
-                  Remove from Wishlist
-                </button>
               </div>
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );
