@@ -1,9 +1,28 @@
+:root {
+  --primary-color: #6ea9a8;
+  --secondary-color: #4a4a4a;
+  --background-color: #f9f9f9;
+  --footer-color: #415161;
+  --text-color: #333;
+  --light-text-color: #666;
+  --border-color: #e0e0e0;
+  --text-01: #45413e;
+  --light-01: #f9f9f9;
+  --light-02: #ffffff;
+  --brand-01: #db7f67;
+  --brand-02: #f4cfc6;
+  --card-hover: 0px 4px 24px rgba(0, 0, 0, 0.15);
+  --card-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+  --hover-timing: all 0.2s ease;
+  --nav-card-size: 240px;
+}
+
 .footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  background-color: #111; 
+  background-color: var(--footer-color);
   color: #fff;
   font-size: 14px;
 }
@@ -19,9 +38,9 @@
 }
 
 .footer-right a {
-  color: #fff; /* White icons */
+  color: #fff;
   margin-left: 20px;
-  font-size: 24px; /* Larger icon size */
+  font-size: 24px;
   transition: color 0.3s ease;
 }
 
@@ -273,4 +292,4 @@
   .checkout-sections {
     flex-direction: column;
   }
-} */
+}

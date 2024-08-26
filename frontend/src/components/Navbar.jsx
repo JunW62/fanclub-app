@@ -46,7 +46,15 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <div>
+      <div className="navbar-left">
+        <Link to="/">
+          <img src={logo} alt="Fan Club Logo" className="navbar-logo" />
+          <h1>
+            Cael Anselm <br /> FanClub
+          </h1>
+        </Link>
+      </div>
+      <div className="navbar-center">
         <ul className="navbar-links">
           <li>
             <Link to="/news-events">NEWS & EVENTS</Link>
@@ -54,11 +62,7 @@ const Navbar = () => {
           <li>
             <Link to="/gallery">GALLERY</Link>
           </li>
-          <div>
-            <Link to="/">
-              <img src={logo} alt="Fan Club Logo" className="navbar-logo" />
-            </Link>
-          </div>
+
           <li>
             <Link to="/store">STORE</Link>
           </li>
