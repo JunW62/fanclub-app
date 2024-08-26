@@ -14,6 +14,7 @@ export const loginUser = createAsyncThunk(
       );
       const { token, user } = response.data;
       localStorage.setItem("token", token);
+      localStorage.setItem("userInfo", JSON.stringify(user));
       return { token, user };
     } catch (err) {
       return rejectWithValue(err.response.data);
@@ -30,7 +31,6 @@ export const fetchUserProfile = createAsyncThunk(
       const response = await axios.get(`${apiUril}/api/users/profile`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      console.log("Fetched user profile:", response.data);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response?.data || error.message);
@@ -58,16 +58,16 @@ export const updateUserProfile = createAsyncThunk(
   }
 );
 
+export const logout = createAsyncThunk("user/logout", async () => {
+  localStorage.removeItem("token");
+  localStorage.removeItem("userInfo");
+});
+
 const loadUserFromLocalStorage = () => {
   const token = localStorage.getItem("token");
-  if (token) {
-    try {
-      const userInfo = jwtDecode(token);
-      return { userInfo, token };
-    } catch (error) {
-      console.error("Failed to decode token:", error.message);
-      return { userInfo: null, token: null };
-    }
+  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+  if (token && userInfo) {
+    return { userInfo, token };
   }
   return { userInfo: null, token: null };
 };
@@ -80,10 +80,8 @@ const userSlice = createSlice({
     error: null,
   },
   reducers: {
-    logout: (state) => {
-      state.userInfo = null;
-      state.token = null;
-      localStorage.removeItem("token");
+    setUserInfo: (state, action) => {
+      state.userInfo = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -95,23 +93,15 @@ const userSlice = createSlice({
         state.status = "succeeded";
         state.userInfo = action.payload.user;
         state.token = action.payload.token;
-        console.log("User info after login:", state.userInfo);
+        state.error = null;
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload;
       })
-      .addCase(fetchUserProfile.pending, (state) => {
-        state.status = "loading";
-      })
       .addCase(fetchUserProfile.fulfilled, (state, action) => {
-        state.status = "succeeded";
         state.userInfo = action.payload;
-        console.log("Updated userInfo in Redux:", state.userInfo);
-      })
-      .addCase(fetchUserProfile.rejected, (state, action) => {
-        state.status = "failed";
-        state.error = action.payload;
+        state.status = "succeeded";
       })
       .addCase(updateUserProfile.pending, (state) => {
         state.status = "loading";
@@ -119,13 +109,18 @@ const userSlice = createSlice({
       .addCase(updateUserProfile.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.userInfo = action.payload;
+        state.error = null;
       })
       .addCase(updateUserProfile.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload;
+      })
+      .addCase(logout.fulfilled, (state) => {
+        state.userInfo = null;
+        state.token = null;
+        state.status = "idle";
       });
   },
 });
 
-export const { logout } = userSlice.actions;
 export default userSlice.reducer;

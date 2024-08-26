@@ -24,8 +24,15 @@ const Navbar = () => {
   }, [fetchData]);
 
   useEffect(() => {
-    // console.log("Navbar useEffect - token:", token, "userInfo:", userInfo);
-  }, [token, userInfo]);
+    if (token && !userInfo) {
+      const storedUserInfo = JSON.parse(localStorage.getItem("userInfo"));
+      if (storedUserInfo) {
+        dispatch({ type: "user/setUserInfo", payload: storedUserInfo });
+      } else {
+        dispatch(fetchUserProfile());
+      }
+    }
+  }, [dispatch, token, userInfo]);
 
   const handleLogout = () => {
     dispatch(logout());
@@ -75,15 +82,32 @@ const Navbar = () => {
                   <Link to="/profile" onClick={() => setShowDropdown(false)}>
                     Profile
                   </Link>
+                  <Link to="/orders" onClick={() => setShowDropdown(false)}>
+                    Orders
+                  </Link>
                   <button onClick={handleLogout}>Logout</button>
                 </div>
               )}
             </div>
           ) : (
-            <Link to="/login" className="icon-link">
-              <FaUser />
-              Login
-            </Link>
+            <div className="user-menu">
+              <button
+                onClick={() => setShowDropdown(!showDropdown)}
+                className="user-button"
+              >
+                <FaUser />
+              </button>
+              {showDropdown && (
+                <div className="dropdown-menu">
+                  <Link to="/signup" onClick={() => setShowDropdown(false)}>
+                    Sign Up
+                  </Link>
+                  <Link to="/login" onClick={() => setShowDropdown(false)}>
+                    Login
+                  </Link>
+                </div>
+              )}
+            </div>
           )}
         </div>
         <Link to="/wishlist" className="icon-link">
