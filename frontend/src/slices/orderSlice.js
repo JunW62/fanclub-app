@@ -65,6 +65,9 @@ export const fetchUserOrders = createAsyncThunk(
         throw new Error("No token found. User might not be logged in.");
       }
 
+      console.log("Fetching orders for user:", userId);
+      console.log("Using token:", token);
+
       const config = {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -99,7 +102,12 @@ const orderSlice = createSlice({
     error: null,
     currentOrder: null, // Store the current order after placing it
   },
-  reducers: {},
+  reducers: {
+    resetOrderStatus: (state) => {
+      state.status = "idle";
+      state.error = null;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(placeOrder.pending, (state) => {
@@ -144,4 +152,5 @@ const orderSlice = createSlice({
   },
 });
 
+export const { resetOrderStatus } = orderSlice.actions;
 export default orderSlice.reducer;

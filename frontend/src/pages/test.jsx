@@ -13,8 +13,7 @@ const CheckoutPage = () => {
   const error = useSelector((state) => state.orders.error);
   const userInfo = useSelector((state) => state.user.userInfo);
 
-  const [isOrderSubmitted, setIsOrderSubmitted] = useState(false);
-
+  const [orderPlaced, setOrderPlaced] = useState(false);
   const [shippingAddress, setShippingAddress] = useState({
     street: "",
     city: "",
@@ -24,31 +23,32 @@ const CheckoutPage = () => {
   });
 
   useEffect(() => {
-    // console.log("Component mounted or updated");
-    // console.log("Cart Items:", cartItems);
-    // console.log("Order Status:", orderStatus);
-    // console.log("User Info:", userInfo);
+    console.log("Component mounted or updated");
+    console.log("Cart Items:", cartItems);
+    console.log("Order Status:", orderStatus);
+    console.log("User Info:", userInfo);
 
     if (!userInfo) {
       console.log("No user info, redirecting to login");
       navigate("/login");
     }
-  }, [userInfo, navigate]);
+
+    // CHANGE: Reset order status when component mounts
+    return () => {
+      console.log("Component unmounting, resetting order status");
+      dispatch(resetOrderStatus());
+    };
+  }, [userInfo, navigate, dispatch]);
 
   useEffect(() => {
     console.log("Order status changed:", orderStatus);
-    console.log("Is order submitted:", isOrderSubmitted);
-
-    if (orderStatus === "succeeded" && isOrderSubmitted) {
-      console.log("Order placed successfully!");
+    if (orderStatus === "succeeded" && orderPlaced) {
+      console.log("Order placed successfully, resetting state");
+      setOrderPlaced(false);
+      // CHANGE: Reset cart here if needed
+      // dispatch(resetCart());
     }
-
-    return () => {
-      if (orderStatus === "succeeded" || orderStatus === "failed") {
-        dispatch(resetOrderStatus());
-      }
-    };
-  }, [orderStatus, isOrderSubmitted, dispatch]);
+  }, [orderStatus, orderPlaced]);
 
   const handleAddressChange = (e) => {
     const { name, value } = e.target;
@@ -89,41 +89,23 @@ const CheckoutPage = () => {
 
     console.log("Dispatching placeOrder with data:", orderData);
     dispatch(placeOrder(orderData));
-    setIsOrderSubmitted(true);
+    setOrderPlaced(true);
   };
 
   console.log(
     "Rendering component. Order status:",
     orderStatus,
-    "Is order submitted:",
-    isOrderSubmitted
+    "Order placed:",
+    orderPlaced
   );
 
-  if (isOrderSubmitted) {
-    if (orderStatus === "loading") {
-      return (
-        <div>
-          <PageHeader title="Checkout" />
-          <p>Processing your order...</p>
-        </div>
-      );
-    }
-    if (orderStatus === "succeeded") {
-      return (
-        <div>
-          <PageHeader title="Checkout" />
-          <p className="order-success">Order placed successfully!</p>
-        </div>
-      );
-    }
-    if (orderStatus === "failed") {
-      return (
-        <div>
-          <PageHeader title="Checkout" />
-          <p className="order-error">Error placing order: {error}</p>
-        </div>
-      );
-    }
+  if (orderStatus === "succeeded" && orderPlaced) {
+    return (
+      <div>
+        <PageHeader title="Checkout" />
+        <p className="order-success">Order placed successfully!</p>
+      </div>
+    );
   }
 
   return (
