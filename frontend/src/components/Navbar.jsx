@@ -50,7 +50,8 @@ const Navbar = () => {
         <Link to="/">
           <img src={logo} alt="Fan Club Logo" className="navbar-logo" />
           <h1>
-            Cael Anselm <br /> FanClub
+            <span>Cael Anselm</span>
+            <br /> Fan Club
           </h1>
         </Link>
       </div>
@@ -79,17 +80,18 @@ const Navbar = () => {
                 onClick={() => setShowDropdown(!showDropdown)}
                 className="user-button"
               >
-                {userInfo.username || userInfo.email}
+                {(userInfo.username || userInfo.email).charAt(0).toUpperCase() +
+                  (userInfo.username || userInfo.email).slice(1)}
               </button>
               {showDropdown && (
                 <div className="dropdown-menu">
                   <Link to="/profile" onClick={() => setShowDropdown(false)}>
-                    Profile
+                    PROFILE
                   </Link>
                   <Link to="/orders" onClick={() => setShowDropdown(false)}>
-                    Orders
+                    ORDERS
                   </Link>
-                  <button onClick={handleLogout}>Logout</button>
+                  <button onClick={handleLogout}>LOGOUT</button>
                 </div>
               )}
             </div>
@@ -103,11 +105,11 @@ const Navbar = () => {
               </button>
               {showDropdown && (
                 <div className="dropdown-menu">
-                  <Link to="/signup" onClick={() => setShowDropdown(false)}>
-                    Sign Up
-                  </Link>
                   <Link to="/login" onClick={() => setShowDropdown(false)}>
-                    Login
+                    LOGIN
+                  </Link>
+                  <Link to="/signup" onClick={() => setShowDropdown(false)}>
+                    SIGN UP
                   </Link>
                 </div>
               )}
