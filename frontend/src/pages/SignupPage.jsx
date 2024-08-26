@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "../styles/LoginAndSignup.css";
+import { FaHeart } from "react-icons/fa";
+import loginLogo from "../assets/login-logo.png";
+import { useNavigate, Link } from "react-router-dom";
 
 const apiUril = "http://localhost:3000";
 
@@ -43,57 +47,75 @@ const SignupPage = () => {
   };
 
   return (
-    <div className="signup-container">
-      <h2>Sign Up</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="username">Username</label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-            required
-          />
+    <div className="login-page">
+      <div className="login-container">
+        <div className="loginbox">
+          <h2>Sign Up</h2>
+          <form className="login-form" onSubmit={handleSubmit}>
+            <div className="form-group">
+              <input
+                type="text"
+                id="username"
+                name="username"
+                value={formData.username}
+                onChange={handleChange}
+                required
+                placeholder="Username"
+              />
+            </div>
+            <div className="form-group">
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                placeholder="Email"
+              />
+            </div>
+            <div className="form-group">
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                required
+                placeholder="Password"
+              />
+            </div>
+            <div className="form-group">
+              <input
+                type="password"
+                id="confirmPassword"
+                name="confirmPassword"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                required
+                placeholder="Confirm Password"
+              />
+            </div>
+            {/* {error && <p className="error">{error}</p>}
+            {success && <p className="success">{success}</p>} */}
+            <button type="submit" className="login-button">
+              Sign Up
+            </button>
+          </form>
         </div>
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
+        <div className="leftbox"></div>
+        <div className="rightbox">
+          <h2 className="signupcard-title">
+            <span>Cael Anselm</span> <FaHeart /> <span>FanClub</span>
+          </h2>
+          <p className="tagline">WELCOME TO THE CLUB</p>
+          <img src={loginLogo} alt="Signup Logo" className="login-icon" />
+          <p>Already have an account?</p>
+          <Link to="/login" className="signup-button">
+            LOGIN
+          </Link>
         </div>
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="confirmPassword">Confirm Password</label>
-          <input
-            type="password"
-            id="confirmPassword"
-            name="confirmPassword"
-            value={formData.confirmPassword}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        {error && <p className="error">{error}</p>}
-        {success && <p className="success">{success}</p>}
-        <button type="submit">Sign Up</button>
-      </form>
+      </div>
     </div>
   );
 };

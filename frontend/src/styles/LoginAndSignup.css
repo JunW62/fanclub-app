@@ -1,0 +1,173 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400|Lora");
+
+.login-page {
+  background: #cbc0d3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+.login-container {
+  width: 850px;
+  height: 500px;
+  background: #f6f6f6;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.loginbox {
+  position: absolute;
+  top: -5%;
+  left: 5%;
+  background: #eac7cc;
+  width: 40%;
+  height: 110%;
+  border-radius: 10px;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+.loginbox h2 {
+  color: #f6f6f6;
+  text-align: center;
+  font-size: 2em;
+  letter-spacing: 8px;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 30px;
+}
+
+.form-group label {
+  display: block;
+  color: #ce7d88;
+  font-size: 0.9em;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-bottom: 1px solid rgba(246, 246, 246, 0.5);
+  background: transparent;
+  color: #ce7d88;
+  font-size: 1em;
+}
+
+.form-group input::placeholder {
+  color: rgba(246, 246, 246, 0.7);
+}
+
+.form-group input:focus {
+  outline: none;
+  border-bottom: 2px solid #ce7d88;
+}
+
+.login-button {
+  background: #f6f6f6;
+  color: #ce7d88;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+  width: 50%;
+  align-self: center;
+}
+
+.login-button:hover {
+  background: #ce7d88;
+  color: #f6f6f6;
+}
+
+.leftbox {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+
+.rightbox {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  right: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.signupcard-title {
+  font-family: "Lora", serif;
+  color: #8e9aaf;
+  font-size: 2em;
+  text-align: center;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.signupcard-title span {
+  color: #eac7cc;
+}
+
+.tagline {
+  color: #8e9aaf;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.signup-icon {
+  width: 100px;
+  height: 140px;
+  margin-bottom: 20px;
+}
+
+.signup-button {
+  background: #eac7cc;
+  color: #f6f6f6;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 0.9em;
+  transition: all 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.signup-button:hover {
+  background: #aea9a9;
+}
+
+.rightbox p {
+  font-size: 1.5em;
+  color: #8e9aaf;
+}
+
+.login-icon {
+  width: 250px;
+  height: 140px;
+  margin-bottom: 20px;
+}

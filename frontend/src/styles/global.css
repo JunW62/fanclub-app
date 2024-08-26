@@ -1,12 +1,10 @@
-/* Footer */
-
 .footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  background-color: #111; /* Dark background */
-  color: #fff; /* White text */
+  background-color: #111; 
+  color: #fff;
   font-size: 14px;
 }
 
@@ -275,4 +273,4 @@
   .checkout-sections {
     flex-direction: column;
   }
-}
+} */
