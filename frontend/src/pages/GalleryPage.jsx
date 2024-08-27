@@ -1,5 +1,4 @@
 import React from "react";
-import PageHeader from "../components/Banner";
 import "../styles/global.css";
 
 const GalleryPage = () => {
@@ -39,7 +38,6 @@ const GalleryPage = () => {
 
   return (
     <div>
-      <PageHeader title="Gallery" />
       <div className="gallery-main">
         <img
           src="https://i.ibb.co/djsFxY1/gallery-main.gif"

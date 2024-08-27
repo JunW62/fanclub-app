@@ -26,6 +26,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px 20px;
+
   background-color: var(--navbar-color);
   /* border-bottom: 1px solid #ddd; */
 }

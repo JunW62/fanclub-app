@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Nerko+One&family=New+Amsterdam&display=swap");
 :root {
   --primary-color: #6ea9a8;
   --secondary-color: #4a4a4a;
@@ -113,21 +114,34 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
-  background-color: white;
+  background-color: var(--light-01);
   margin-bottom: 20px;
+  height: 100px;
+  /* padding: 10px; */
+  margin-bottom: 20px;
+  margin-top: 40px;
 }
 
 .header-image {
-  width: 80px;
-  height: 80px;
+  height: 100%;
+  width: auto;
+  height: auto;
   object-fit: cover;
-  margin-right: 20px;
+  max-height: 100px;
 }
 
 .header-title {
   font-size: 3rem;
-  color: #333;
+  color: #828fa2;
+  align-self: center;
+  font-family: "Crimson Text", serif;
+  padding: 10px;
+}
+
+.header-icon {
+  font-size: 3rem;
+  color: #828fa2;
+  align-self: center;
 }
 
 /* Gallery */

@@ -1,0 +1,208 @@
+.carousel {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #e6decf;
+  padding: 0 30px;
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-container {
+  display: flex;
+  flex-grow: 2;
+  position: relative;
+}
+
+.carousel-slide {
+  display: none;
+  flex-grow: 1;
+  padding: 42px 0 30px;
+}
+
+.carousel-slide.active {
+  display: flex;
+}
+
+.left-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 320px;
+}
+
+.main-header {
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 4px;
+  font-weight: 600;
+}
+
+.main-title {
+  font-family: var(--italic-font);
+  font-size: 100px;
+  font-weight: 400;
+  margin-top: 10px;
+  line-height: 1em;
+}
+
+.main-subtitle {
+  font-family: var(--italic-font);
+  font-weight: 400;
+  font-size: 32px;
+  margin-top: 14px;
+  margin-bottom: 60px;
+}
+
+.main-content__title {
+  font-size: 26px;
+  font-family: var(--italic-font);
+  font-style: italic;
+  margin-bottom: 14px;
+}
+
+.main-content__subtitle {
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 24px;
+  letter-spacing: -0.01em;
+}
+
+.more-menu {
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+.more-menu svg {
+  width: 28px;
+  height: 18px;
+  margin-left: 10px;
+}
+
+.center {
+  display: flex;
+  margin-left: 120px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.bottle-bg {
+  width: 320px;
+  height: 450px;
+  object-fit: cover;
+  border-radius: 160px;
+}
+
+.bottle-img {
+  position: absolute;
+  top: 25%;
+  left: 0;
+  transform: scale(1.6);
+}
+
+.button-wrapper {
+  position: absolute;
+  right: 30px;
+  bottom: 20px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+}
+
+.swiper-button {
+  border: 1px solid var(--body-color);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, var(--body-color) 40%, transparent 0%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 0.3s ease-out;
+  cursor: pointer;
+}
+
+.swiper-button + .swiper-button {
+  margin-left: 16px;
+}
+
+.swiper-button:hover {
+  background-color: var(--body-color);
+  background-position: left bottom;
+}
+
+.swiper-button:hover svg {
+  stroke: #fff;
+}
+
+.swiper-prev-button {
+  background: linear-gradient(to left, var(--body-color) 40%, transparent 0%);
+  background-size: 200% 100%;
+  background-position: left bottom;
+  transition: all 0.3s ease-out;
+}
+
+.swiper-prev-button svg {
+  transform: rotate(-180deg);
+}
+
+.swiper-prev-button:hover {
+  background-position: right bottom;
+}
+
+.swiper-pagination {
+  position: absolute;
+  right: 30px;
+  top: 100px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 930px) {
+  .carousel-slide {
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .left-side {
+    text-align: center;
+    max-width: 450px;
+  }
+
+  .center {
+    margin-left: 0;
+    margin-bottom: 56px;
+  }
+
+  .more-menu {
+    justify-content: center;
+  }
+
+  .button-wrapper {
+    top: 0;
+    left: 0;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0 60px;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .carousel {
+    padding: 0;
+  }
+
+  .button-wrapper {
+    padding: 0 20px;
+  }
+
+  .bottle-bg {
+    width: 220px;
+    height: 340px;
+  }
+}

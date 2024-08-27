@@ -55,13 +55,15 @@ const StorePage = () => {
 
   return (
     <div className="store-page">
-      <PageHeader title="Store" />
       <div className="store-content">
-        <h2 className="section-title">New In</h2>
-        <ProductList products={newInProducts} />
-        <h2 className="section-title">Best Sellers</h2>
-        <ProductList products={bestSellers} />
-        <h2 className="section-title">All Products</h2>
+        <PageHeader title="New In" className="store-header" />
+        <ProductList products={newInProducts} className="new-in-product-list" />
+        <PageHeader title="Best Sellers" className="store-header" />
+        <ProductList
+          products={bestSellers}
+          className="best-sellers-product-list"
+        />
+        <PageHeader title="All Products" className="store-header" />
         <ProductList products={allProducts} />
       </div>
     </div>

@@ -44,7 +44,7 @@ const Wishlist = () => {
               <div className="wishlist-item-details">
                 <h3 className="wishlist-item-name">{item.name}</h3>
                 <p className="wishlist-item-price">
-                  ${item.price.toFixed(2)} USD
+                  $ {item.price.toFixed(2)} USD
                 </p>
                 <div className="wishlist-item-actions">
                   <button
