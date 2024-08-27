@@ -49,14 +49,14 @@ const OrderPage = () => {
                     <div className="order-history-product-info">
                       <h4>{item.product?.name}</h4>
                       <p>Quantity: {item.quantity}</p>
-                      <p>Price: ${item.product?.price?.toFixed(2) || "N/A"}</p>
+                      <p>Price: $ {item.product?.price?.toFixed(2) || "N/A"}</p>
                     </div>
                   </div>
                 ))}
               </div>
               <div className="order-history-summary">
                 <p className="order-history-total">
-                  Total: ${order.totalPrice?.toFixed(2) || "N/A"}
+                  Total: $ {order.totalPrice?.toFixed(2) || "N/A"}
                 </p>
                 <p className="order-history-status">Status: {order.status}</p>
               </div>

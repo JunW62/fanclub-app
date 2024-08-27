@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { removeFromCart, updateCartQuantity } from "../slices/cartSlice";
 import PageHeader from "../components/Banner";
-import { FaTrash, FaMinus, FaPlus } from "react-icons/fa";
+import { FaTrashAlt, FaMinus, FaPlus } from "react-icons/fa";
 import "../styles/Cart.css";
 
 const CartPage = () => {
@@ -48,7 +48,7 @@ const CartPage = () => {
                   <div className="cart-item-details">
                     <h3 className="cart-item-name">{item.name}</h3>
                     <p className="cart-item-price">
-                      ${item.price.toFixed(2)} USD
+                      $ {item.price.toFixed(2)} USD
                     </p>
                     <div className="quantity-control">
                       <button
@@ -57,7 +57,7 @@ const CartPage = () => {
                         }
                         disabled={item.quantity <= 1}
                       >
-                        <FaMinus />
+                        <FaMinus style={{ marginTop: "4px" }} />
                       </button>
                       <span>{item.quantity}</span>
                       <button
@@ -65,7 +65,7 @@ const CartPage = () => {
                           handleQuantityChange(item._id, item.quantity + 1)
                         }
                       >
-                        <FaPlus />
+                        <FaPlus style={{ marginTop: "4px" }} />
                       </button>
                     </div>
                   </div>
@@ -73,13 +73,13 @@ const CartPage = () => {
                     className="remove-button"
                     onClick={() => handleRemove(item._id)}
                   >
-                    <FaTrash />
+                    <FaTrashAlt />
                   </button>
                 </div>
               ))}
             </div>
             <div className="cart-summary">
-              <h3>Total: ${calculateTotal()}</h3>
+              <h3>Total: $ {calculateTotal()}</h3>
               <button className="checkout-button" onClick={handleCheckout}>
                 Proceed to Checkout
               </button>

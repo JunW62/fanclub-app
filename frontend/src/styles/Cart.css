@@ -63,8 +63,9 @@
   background-color: #4a4a4a;
   color: white;
   border: none;
-  border-radius: 4px;
-  padding: 5px 10px;
+  border-radius: 25px;
+  width: 30px;
+  height: 30px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
@@ -100,21 +101,22 @@
 .cart-summary h3 {
   font-size: 24px;
   margin-bottom: 20px;
+  margin-right: 40px;
 }
 
 .checkout-button {
-  background-color: #4caf50;
+  background-color: #518151;
   color: white;
   border: none;
   padding: 15px 30px;
   font-size: 18px;
-  border-radius: 4px;
+  border-radius: 25px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
 .checkout-button:hover {
-  background-color: #45a049;
+  background-color: #236952;
 }
 
 @media (max-width: 768px) {

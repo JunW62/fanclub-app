@@ -4,6 +4,7 @@ import { placeOrder, resetOrderStatus } from "../slices/orderSlice"; // CHANGE: 
 import { useNavigate } from "react-router-dom";
 import PageHeader from "../components/Banner";
 import "../styles/global.css";
+import "../styles/Checkout.css";
 
 const CheckoutPage = () => {
   const dispatch = useDispatch();
@@ -143,12 +144,12 @@ const CheckoutPage = () => {
                 <div className="order-item-details">
                   <h3>{item.name}</h3>
                   <p>Quantity: {item.quantity}</p>
-                  <p>Price: ${item.price.toFixed(2)}</p>
+                  <p>Price: $ {item.price.toFixed(2)}</p>
                 </div>
               </div>
             ))}
             <p className="order-total">
-              Total: $
+              Total: ${" "}
               {cartItems
                 .reduce((total, item) => total + item.quantity * item.price, 0)
                 .toFixed(2)}
