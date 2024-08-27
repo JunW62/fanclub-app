@@ -111,9 +111,9 @@ const CheckoutPage = () => {
     }
     if (orderStatus === "succeeded") {
       return (
-        <div>
-          <PageHeader title="Checkout" />
-          <p className="order-success">Order placed successfully!</p>
+        <div className="order-success-container">
+          <PageHeader title="Congratulations!" />
+          <p className="order-success">Order has been placed successfully!</p>
         </div>
       );
     }

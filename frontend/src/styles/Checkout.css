@@ -103,9 +103,16 @@
 }
 
 .order-success {
-  font-size: 24px;
-  color: #4caf50;
+  font-size: 40px;
+  color: #828fa2;
   text-align: center;
+}
+.order-success-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
 }
 
 .error-message {

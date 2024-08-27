@@ -6,43 +6,28 @@ import Carousel from "../components/CarouselComponent";
 
 const slides = [
   {
-    header: "Closca Bottle",
-    title: "Beach",
-    price: "€ 39.90",
-    contentTitle:
-      "In 20 years, there could be more plastic in our oceans than fish.",
-    contentSubtitle:
-      "Plastic pollution injures more than 100.000 marine animals every year. It takes around 450 years for one plastic bottle to decompose.",
+    header: "Real World",
+    title: "Cael (Emerald)",
+    info: "Age: 25\nHeight: 182 cm\nIdentity: Your Guardian",
+    contentTitle: `"I admire its will to live and thrive."`,
     backgroundImage:
-      "https://www.lovebrushchronicles.com/pc/gw/20230717183009/img/l_role2_1cee566.png",
-    bottleImage:
-      "https://www.lovebrushchronicles.com/pc/gw/20230717183009/img/l_role2_1cee566.png",
+      "https://www.lovebrushchronicles.com/pc/gw/20230717183009/img/role2_f5f43e1.png",
   },
   {
-    header: "Closca Bottle",
-    title: "Beach",
-    price: "€ 39.90",
-    contentTitle:
-      "In 20 years, there could be more plastic in our oceans than fish.",
-    contentSubtitle:
-      "Plastic pollution injures more than 100.000 marine animals every year. It takes around 450 years for one plastic bottle to decompose.",
+    header: "Godheim",
+    title: "Silver Knight",
+    info: "Age: ???\nHeight: 182 cm\nIdentity: Leader of the Rebellion",
+    contentTitle: `"Your happiness is all that I desire. The story will not complete until everything ends happily for the protagonist."`,
     backgroundImage:
-      "https://www.lovebrushchronicles.com/pc/gw/20230717183009/img/d_role2_6d69321.png",
-    bottleImage:
       "https://www.lovebrushchronicles.com/pc/gw/20230717183009/img/d_role2_6d69321.png",
   },
   {
-    header: "Closca Bottle",
-    title: "Beach",
-    price: "€ 39.90",
-    contentTitle:
-      "In 20 years, there could be more plastic in our oceans than fish.",
-    contentSubtitle:
-      "Plastic pollution injures more than 100.000 marine animals every year. It takes around 450 years for one plastic bottle to decompose.",
+    header: "Eden",
+    title: "Perfect Silver",
+    info: "Age: ???\nHeight: 182 cm\nIdentity: Paragon from another world",
+    contentTitle: `"Being with someone is better than being alone, even if you are trapped in a cage."`,
     backgroundImage:
-      "https://www.lovebrushchronicles.com/pc/gw/20230717183009/img/role2_f5f43e1.png",
-    bottleImage:
-      "https://www.lovebrushchronicles.com/pc/gw/20230717183009/img/role2_f5f43e1.png",
+      "https://www.lovebrushchronicles.com/pc/gw/20230717183009/img/l_role2_1cee566.png",
   },
 ];
 
