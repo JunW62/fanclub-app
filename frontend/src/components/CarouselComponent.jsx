@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { IoArrowForwardCircleOutline } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 import "../styles/Carousel.css";
 
 const Carousel = ({ slides }) => {
@@ -13,6 +14,10 @@ const Carousel = ({ slides }) => {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
   };
 
+  const navigate = useNavigate();
+  const handleNavigation = (path) => {
+    navigate(path);
+  };
   return (
     <div className="carousel">
       <div className="carousel-container">
@@ -37,8 +42,18 @@ const Carousel = ({ slides }) => {
               <div className="main-content">
                 <div className="main-content_title">{slide.contentTitle}</div>
                 <div className="more-menu">
-                  <button className="more-menu-button">Join the story</button>
-                  <button className="more-menu-button">Learn more</button>
+                  <button
+                    className="more-menu-button"
+                    onClick={() => handleNavigation("/signup")}
+                  >
+                    Join the story
+                  </button>
+                  <button
+                    className="more-menu-button"
+                    onClick={() => handleNavigation("/about")}
+                  >
+                    Learn more
+                  </button>
                 </div>
               </div>
             </div>
