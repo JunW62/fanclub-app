@@ -114,7 +114,7 @@ body {
 
 .wishlist-btn:hover,
 .wishlist-btn.active {
-  color: #ff4d4d;
+  color: #ce3d2e;
 }
 
 @media (max-width: 768px) {

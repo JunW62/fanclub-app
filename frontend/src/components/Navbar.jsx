@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaUser, FaShoppingCart, FaHeart } from "react-icons/fa";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
 import { logout, fetchUserProfile } from "../slices/userSlice";
@@ -34,9 +34,11 @@ const Navbar = () => {
     }
   }, [dispatch, token, userInfo]);
 
+  const navigate = useNavigate();
   const handleLogout = () => {
     dispatch(logout());
     setShowDropdown(false);
+    navigate("/");
   };
 
   const cartItemCount = cartItems.reduce(

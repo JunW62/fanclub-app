@@ -154,7 +154,7 @@
 .column {
   flex: 24%;
   max-width: 24%;
-  padding: 0 4px;
+  padding: 0.5%;
 }
 
 .column img {
@@ -167,6 +167,7 @@
   display: flex;
   justify-content: center;
   margin-bottom: 30px;
+  width: 100%;
 }
 
 .gallery-main img {

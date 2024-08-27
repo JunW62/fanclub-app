@@ -50,7 +50,7 @@ const ManageProductsPage = () => {
                   />
                 </td>
                 <td>{product.name}</td>
-                <td>${product.price.toFixed(2)}</td>
+                <td>$ {product.price.toFixed(2)}</td>
                 <td>{product.stock}</td>
                 <td>
                   <Link
@@ -65,8 +65,9 @@ const ManageProductsPage = () => {
                   >
                     Delete
                   </button>
-                  <Link to="/add-product" className="add-product-btn">
-                    Add
+
+                  <Link to="/add-product">
+                    <button className="add-product-btn">Add</button>
                   </Link>
                 </td>
               </tr>
