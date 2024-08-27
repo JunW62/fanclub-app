@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Baskervville+SC&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Nerko+One&family=New+Amsterdam&family=Pacifico&display=swap");
 .carousel {
-  height: 80vh;
+  height: 85vh;
   display: flex;
   flex-direction: column;
   background-color: #e6decf;
