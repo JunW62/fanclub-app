@@ -1,0 +1,36 @@
+.add-product-page {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.add-product-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.add-product-form label {
+  font-weight: bold;
+}
+
+.add-product-form input,
+.add-product-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.add-product-form button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-product-form button:hover {
+  background-color: #45a049;
+}

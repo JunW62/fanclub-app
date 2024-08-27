@@ -12,6 +12,7 @@ import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
 import EditProductPage from "./pages/EditProductPage";
 import ManageProductsPage from "./pages/ManageProductsPage";
+import AddProductPage from "./pages/AddProductPage";
 import GalleryPage from "./pages/GalleryPage";
 import ProfilePage from "./pages/ProfilePage";
 import CheckoutPage from "./pages/CheckoutPage";
@@ -39,6 +40,7 @@ const AppRouter = () => {
         <Route path="/orders" element={<OrderPage />} />
         <Route path="/manage-products" element={<ManageProductsPage />} />
         <Route path="/edit-product/:id" element={<EditProductPage />} />
+        <Route path="/add-product" element={<AddProductPage />} />
         {/* Protected Routes */}
         <Route
           path="/store"

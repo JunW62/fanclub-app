@@ -27,6 +27,7 @@ const ManageProductsPage = () => {
   return (
     <div className="manage-products-page">
       <PageHeader title="Manage Products" />
+
       <div className="manage-products-content">
         <table className="products-table">
           <thead>
@@ -64,6 +65,9 @@ const ManageProductsPage = () => {
                   >
                     Delete
                   </button>
+                  <Link to="/add-product" className="add-product-btn">
+                    Add
+                  </Link>
                 </td>
               </tr>
             ))}
