@@ -20,13 +20,11 @@ const AddProductPage = () => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleImageUrlChange = (e, index) => {
-    const newImgUrls = [...formData.imgUrls];
-    newImgUrls[index] = { url: e.target.value };
-    setFormData({ ...formData, imgUrls: newImgUrls });
+    if (name === "imageUrl") {
+      setFormData({ ...formData, imgUrls: [{ url: value }] });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
   };
 
   const handleSubmit = (e) => {
@@ -100,7 +98,7 @@ const AddProductPage = () => {
             id="imageUrl"
             name="imageUrl"
             value={formData.imgUrls[0].url}
-            onChange={(e) => handleImageUrlChange(e, 0)}
+            onChange={handleInputChange}
             required
           />
         </div>

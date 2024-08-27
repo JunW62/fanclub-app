@@ -19,6 +19,7 @@ const EditProductPage = () => {
     price: 0,
     stock: 0,
     category: "",
+    imgUrls: [{ url: "" }],
   });
 
   useEffect(() => {
@@ -33,13 +34,18 @@ const EditProductPage = () => {
         price: currentProduct.price,
         stock: currentProduct.stock,
         category: currentProduct.category,
+        imgUrls: currentProduct.imgUrls,
       });
     }
   }, [currentProduct]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    if (name === "imageUrl") {
+      setFormData({ ...formData, imgUrls: [{ url: value }] });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
   };
 
   const handleSubmit = (e) => {
@@ -105,6 +111,17 @@ const EditProductPage = () => {
             id="category"
             name="category"
             value={formData.category}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="imageUrl">Image URL:</label>
+          <input
+            type="url"
+            id="imageUrl"
+            name="imageUrl"
+            value={formData.imgUrls[0].url}
             onChange={handleInputChange}
             required
           />

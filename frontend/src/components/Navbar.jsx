@@ -59,7 +59,10 @@ const Navbar = () => {
       <div className="navbar-center">
         <ul className="navbar-links">
           <li>
-            <Link to="/news-events">NEWS & EVENTS</Link>
+            <Link to="/">HOME</Link>
+          </li>
+          <li>
+            <Link to="/news-events">NEWS</Link>
           </li>
           <li>
             <Link to="/gallery">GALLERY</Link>

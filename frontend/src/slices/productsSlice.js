@@ -40,7 +40,10 @@ export const deleteProduct = createAsyncThunk(
 export const createProduct = createAsyncThunk(
   "products/createProduct",
   async (productData) => {
-    const response = await axios.post("/api/products", productData);
+    const response = await axios.post(
+      `${apiUrl}/api/products/products`,
+      productData
+    );
     return response.data;
   }
 );
