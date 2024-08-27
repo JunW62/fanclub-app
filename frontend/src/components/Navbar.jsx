@@ -43,6 +43,7 @@ const Navbar = () => {
     (total, item) => total + item.quantity,
     0
   );
+  const isAdminUser = userInfo && userInfo.id === "66cce58ffdcff37d745b4066";
 
   return (
     <nav className="navbar">
@@ -91,6 +92,14 @@ const Navbar = () => {
                   <Link to="/orders" onClick={() => setShowDropdown(false)}>
                     ORDERS
                   </Link>
+                  {isAdminUser && (
+                    <Link
+                      to="/manage-products"
+                      onClick={() => setShowDropdown(false)}
+                    >
+                      PRODUCTS
+                    </Link>
+                  )}
                   <button onClick={handleLogout}>LOGOUT</button>
                 </div>
               )}
