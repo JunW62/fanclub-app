@@ -80,7 +80,7 @@ const AboutPage = () => {
       <section className="about-section">
         <p>
           Cael Anselm is voiced by Daisuke Hirakawa in the Japanese version of
-          the game and by 马正阳 in the Chinese version.
+          the game and by Zhenyang Ma in the Chinese version.
         </p>
       </section>
 
