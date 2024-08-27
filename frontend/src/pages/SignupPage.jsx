@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../styles/LoginAndSignup.css";
 import { FaHeart } from "react-icons/fa";
@@ -16,6 +16,7 @@ const SignupPage = () => {
   });
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -45,7 +46,11 @@ const SignupPage = () => {
       setSuccess("");
     }
   };
-
+  useEffect(() => {
+    if (success) {
+      navigate("/");
+    }
+  }, [success, navigate]);
   return (
     <div className="login-page">
       <div className="login-container">
@@ -96,8 +101,8 @@ const SignupPage = () => {
                 placeholder="Confirm Password"
               />
             </div>
-            {/* {error && <p className="error">{error}</p>}
-            {success && <p className="success">{success}</p>} */}
+            {error && <p className="error">{error}</p>}
+            {success && <p className="success">{success}</p>}
             <button type="submit" className="login-button">
               Sign Up
             </button>
