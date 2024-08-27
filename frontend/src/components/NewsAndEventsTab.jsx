@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../styles/global.css";
+import "../styles/NewsAndEventsTab.css";
 const NewsEventsTabs = ({ newsData }) => {
   const [activeTab, setActiveTab] = useState("Latest");
 
