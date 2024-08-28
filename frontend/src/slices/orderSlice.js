@@ -8,10 +8,10 @@ export const placeOrder = createAsyncThunk(
   "orders/placeOrder",
   async (orderData, { rejectWithValue, getState }) => {
     try {
-      const token = getState().user.token; // Retrieve token from user state
+      const token = getState().user.token;
       const config = {
         headers: {
-          Authorization: `Bearer ${token}`, // Include token in Authorization header
+          Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
       };
@@ -25,7 +25,7 @@ export const placeOrder = createAsyncThunk(
       return response.data;
     } catch (err) {
       if (err.response && err.response.data.message === "jwt expired") {
-        // Handle token expiration (e.g., refresh token or redirect to login)
+        // Handle token expiration
         console.error("Token expired. Please log in again.");
       }
       return rejectWithValue(err.response ? err.response.data : err.message);
@@ -38,10 +38,10 @@ export const fetchOrdersByUser = createAsyncThunk(
   "orders/fetchOrdersByUser",
   async (userId, { rejectWithValue, getState }) => {
     try {
-      const token = getState().user.token; // Retrieve token from user state
+      const token = getState().user.token;
       const config = {
         headers: {
-          Authorization: `Bearer ${token}`, // Include token in Authorization header
+          Authorization: `Bearer ${token}`,
         },
       };
 
@@ -81,7 +81,7 @@ export const fetchUserOrders = createAsyncThunk(
 
       console.log("Response received:", response);
 
-      // The data is directly in response.data, no need to access .data again
+      // Data in response.data, no need to access .data again
       return response.data;
     } catch (error) {
       console.error("Error in fetchUserOrders:", error);

@@ -47,17 +47,17 @@ const cartSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      // Handle the pending state of placing an order
+
       .addCase(placeOrder.pending, (state) => {
         state.status = "loading";
       })
-      // Handle the fulfilled state of placing an order
+
       .addCase(placeOrder.fulfilled, (state) => {
         state.items = []; // Clear the cart after successful order placement
         state.status = "succeeded";
         localStorage.removeItem("cart"); // Clear cart from localStorage
       })
-      // Handle the rejected state of placing an order
+
       .addCase(placeOrder.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload;

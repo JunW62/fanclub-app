@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 const apiUrl = "http://localhost:3000";
 
-// fetch products from the backend
+// Thunk to fetch products from the backend
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
   async () => {
