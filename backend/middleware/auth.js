@@ -10,7 +10,6 @@ const auth = (req, res, next) => {
         .json({ message: "No Authorization header, authorization denied" });
     }
 
-    // Ensure the token is present and well-formed
     const token = authHeader.replace("Bearer ", "");
 
     if (!token) {
