@@ -11,7 +11,7 @@ router.post("/signup", signup);
 // POST /api/users/login
 router.post("/login", login);
 
-// GET /api/users/profile (Protected route-Private)
+// GET /api/users/profile (route-Private)
 router.get("/profile", auth, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select("-password");
