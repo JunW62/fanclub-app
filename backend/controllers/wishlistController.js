@@ -25,7 +25,6 @@ exports.addToWishlist = async (req, res) => {
     const { productId } = req.body;
     const userId = req.user.id;
 
-    // Log incoming data for debugging
     console.log("Adding to wishlist:", { userId, productId });
 
     // Check if the product exists
@@ -47,7 +46,7 @@ exports.addToWishlist = async (req, res) => {
     user.wishlist.push(productId);
     await user.save();
 
-    // Populate the wishlist with product details before sending the response
+    // Populate the wishlist with product details before sending response
     await user.populate("wishlist");
 
     res
