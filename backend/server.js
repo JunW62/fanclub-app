@@ -37,7 +37,10 @@ app.use(express.json());
 // Enable CORS for all routes
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://fanclub-app-cael.onrender.com"],
+    origin: [
+      "http://localhost:5173",
+      "https://fanclub-app-backend.onrender.com",
+    ],
     credentials: true,
   })
 );
