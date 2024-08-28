@@ -9,9 +9,16 @@
 }
 
 .empty-wishlist {
+  font-size: 40px;
+  color: #828fa2;
   text-align: center;
-  font-size: 18px;
-  color: #666;
+}
+.empty-wishlist-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 55vh;
 }
 
 .wishlist-grid {

@@ -9,9 +9,16 @@
 }
 
 .empty-cart {
+  font-size: 40px;
+  color: #828fa2;
   text-align: center;
-  font-size: 18px;
-  color: #666;
+}
+.empty-cart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 55vh;
 }
 
 .cart-items {
@@ -105,7 +112,7 @@
 }
 
 .checkout-button {
-  background-color: #518151;
+  background-color: #6ea9a8;
   color: white;
   border: none;
   padding: 15px 30px;

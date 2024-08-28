@@ -31,7 +31,9 @@ const Wishlist = () => {
   return (
     <div className="wishlist">
       {items.length === 0 ? (
-        <p className="empty-wishlist">Your wishlist is empty.</p>
+        <div className="empty-wishlist-container">
+          <p className="empty-wishlist">Your wishlist is empty.</p>
+        </div>
       ) : (
         <div className="wishlist-grid">
           {items.map((item) => (

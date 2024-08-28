@@ -34,7 +34,9 @@ const CartPage = () => {
       <PageHeader title="Your Shopping Cart" />
       <div className="cart-content">
         {cartItems.length === 0 ? (
-          <p className="empty-cart">Your cart is empty.</p>
+          <div className="empty-cart-container">
+            <p className="empty-cart">Your cart is empty.</p>
+          </div>
         ) : (
           <>
             <div className="cart-items">
