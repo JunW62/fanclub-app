@@ -1,3 +1,3 @@
-const apiUrl = "http://localhost:3000";
+const apiUrl = "https://fanclub-app-backend.onrender.com/api";
 
 export default apiUrl;
