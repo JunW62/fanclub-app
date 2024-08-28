@@ -67,7 +67,7 @@ function ProfilePage() {
         <div className="profile-section">
           <h2>Wishlist</h2>
           <div className="wishlist-preview">
-            {wishlistItems.slice(0, 3).map((item) => (
+            {wishlistItems.slice(0, 4).map((item) => (
               <div key={item._id} className="wishlist-item">
                 <img src={item.imgUrls[0].url} alt={item.name} />
                 <p>{item.name}</p>
