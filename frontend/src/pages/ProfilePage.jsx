@@ -52,7 +52,7 @@ function ProfilePage() {
         <div className="profile-section">
           <h2>Recent Orders</h2>
           <div className="recent-orders">
-            {orders.slice(0, 3).map((order) => (
+            {orders.slice(0, 4).map((order) => (
               <div key={order._id} className="order-item">
                 <p>Order #{order._id.substring(0, 5)}...</p>
                 <p>Date: {new Date(order.createdAt).toLocaleDateString()}</p>
