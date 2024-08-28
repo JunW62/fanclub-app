@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 // Controller for user sign-up
 exports.signup = async (req, res) => {
   try {
-    console.log("Request Body:", req.body); // Log the request body to see the incoming data
+    // console.log("Request Body:", req.body);
 
     const { username, email, password } = req.body;
 
@@ -54,7 +54,7 @@ exports.login = async (req, res) => {
       user: {
         id: user.id,
         email: user.email,
-        username: user.username, // Add username to the payload
+        username: user.username, // Add username not name
       },
     };
 
