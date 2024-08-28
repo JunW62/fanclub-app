@@ -11,7 +11,6 @@ const UserProfile = () => {
         <div>
           <p>Username: {userInfo.username}</p>
           <p>Email: {userInfo.email}</p>
-          {/* Display other user info as needed */}
         </div>
       ) : (
         <p>No user logged in.</p>

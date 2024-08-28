@@ -1,14 +1,11 @@
 import React, { createContext, useContext, useState } from "react";
 
-// Create the context
 const NewsContext = createContext();
 
-// Custom hook to use the NewsContext
 export const useNews = () => {
   return useContext(NewsContext);
 };
 
-// NewsProvider component to wrap around components that need access to news data
 export const NewsProvider = ({ children }) => {
   const newsData = {
     latest: [
