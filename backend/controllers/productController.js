@@ -21,7 +21,7 @@ exports.uploadProducts = async (req, res) => {
       fs.readFileSync(path.join(__dirname, "../data/product.json"), "utf-8")
     );
 
-    // Iterate over the products and create them one by one
+    // Iterate over the products and create them
     for (let productData of products) {
       const product = new Product(productData);
       await product.save();
