@@ -5,7 +5,7 @@ import { FaHeart } from "react-icons/fa";
 import loginLogo from "../assets/login-logo.png";
 import { useNavigate, Link } from "react-router-dom";
 
-const apiUril = "http://localhost:3000";
+import apiUrl from "../config";
 
 const SignupPage = () => {
   const [formData, setFormData] = useState({

@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const apiUrl = "http://localhost:3000";
+import apiUrl from "../config";
 
 // Thunk to place an order
 export const placeOrder = createAsyncThunk(

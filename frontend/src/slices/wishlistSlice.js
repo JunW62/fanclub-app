@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const apiUrl = "http://localhost:3000";
+import apiUrl from "../config";
 
 // Thunk to fetch the wishlist for the logged-in user
 export const fetchWishlist = createAsyncThunk(

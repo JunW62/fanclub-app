@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
-const apiUril = "http://localhost:3000";
+import apiUrl from "../config";
 
 // Thunk to handle login
 export const loginUser = createAsyncThunk(
@@ -9,7 +9,7 @@ export const loginUser = createAsyncThunk(
   async (credentials, { rejectWithValue }) => {
     try {
       const response = await axios.post(
-        `${apiUril}/api/users/login`,
+        `${apiUrl}/api/users/login`,
         credentials
       );
       const { token, user } = response.data;
@@ -28,7 +28,7 @@ export const fetchUserProfile = createAsyncThunk(
   async (_, { getState, rejectWithValue }) => {
     try {
       const { token } = getState().user;
-      const response = await axios.get(`${apiUril}/api/users/profile`, {
+      const response = await axios.get(`${apiUrl}/api/users/profile`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       return response.data;
@@ -45,7 +45,7 @@ export const updateUserProfile = createAsyncThunk(
     try {
       const { token } = getState().user;
       const response = await axios.put(
-        `${apiUril}/api/users/profile`,
+        `${apiUrl}/api/users/profile`,
         userData,
         {
           headers: { Authorization: `Bearer ${token}` },
