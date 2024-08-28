@@ -40,6 +40,7 @@ app.use(
     origin: [
       "http://localhost:5173",
       "https://fanclub-app-backend.onrender.com",
+      "https://fanclub-app-cael.onrender.com",
     ],
     credentials: true,
   })
