@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { placeOrder, resetOrderStatus } from "../slices/orderSlice"; // CHANGE: Import resetOrderStatus
+import { placeOrder, resetOrderStatus } from "../slices/orderSlice";
 import { useNavigate } from "react-router-dom";
 import PageHeader from "../components/Banner";
 import "../styles/global.css";
