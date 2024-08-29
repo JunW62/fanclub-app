@@ -32,7 +32,7 @@ const SignupPage = () => {
     }
 
     try {
-      const response = await axios.post(`${apiUril}/api/users/signup`, {
+      const response = await axios.post(`${apiUrl}/api/users/signup`, {
         username: formData.username,
         email: formData.email,
         password: formData.password,
